@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'include_fluent' => false,
+    'include_fluent' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +139,7 @@ return [
     */
 
     'model_locations' => [
-        'app',
+        'app/Models',
     ],
 
     /*
@@ -182,6 +182,11 @@ return [
     'extra' => [
         'Eloquent' => ['Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'],
         'Session' => ['Illuminate\Session\Store'],
+        'Expectation' => [
+            'Pest\Expectation',
+            'Pest\Support\Extendable',
+        ],
+        'Extendable' => ['Pest\Support\Extendable'],
     ],
 
     'magic' => [],
@@ -278,7 +283,7 @@ return [
     | magic methods and properties.
     |
     */
-    'include_class_docblocks' => false,
+    'include_class_docblocks' => true,
 
     /*
     |--------------------------------------------------------------------------
