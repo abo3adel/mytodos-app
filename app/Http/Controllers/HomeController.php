@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::withCount("todos")
+            ->where("user_id", Auth::id())
+            ->get();
+
+        return view("home", compact("categories"));
     }
 }

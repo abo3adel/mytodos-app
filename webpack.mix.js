@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+require("laravel-mix-swc");
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,7 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.scm('resources/js/app.ts', 'public/js')
+mix.swc('resources/js/app.ts', 'public/js', {
+    test: ".*.ts$",
+    jsc: {
+        parser: {
+            syntax: "typescript",
+            jsx: false,
+            decorators: true,
+            dynamicImport: true,
+            exportDefaultFrom: true,
+        }
+    }
+})
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps()
     .version();

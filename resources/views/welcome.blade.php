@@ -49,17 +49,17 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-4">
-                                <a href="{{route('api_v.todo.index')}}" class="btn btn-primary">
+                                <a href="{{route('home')}}" class="btn btn-primary">
                                     Api Version
                                 </a>
                             </div>
                             <div class="col-4">
-                                <a href="{{route('api_v.todo.index')}}" class="btn btn-primary">
+                                <a href="{{route('home')}}" class="btn btn-primary">
                                     SPA Version
                                 </a>
                             </div>
                             <div class="col-4">
-                                <a href="{{route('api_v.todo.index')}}" class="btn btn-primary">
+                                <a href="{{route('home')}}" class="btn btn-primary">
                                     Normal Laravel Version
                                 </a>
                             </div>

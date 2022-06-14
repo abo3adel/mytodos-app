@@ -25,7 +25,7 @@ class CategoryFactory extends Factory
     {
         return [
             'user_id' => fn() => User::factory(),
-            'title' => $this->faker->sentence(4),
+            'title' => $this->faker->sentence(2),
             'slug' => $this->faker->slug,
         ];
     }
