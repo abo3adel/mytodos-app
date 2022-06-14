@@ -24,7 +24,7 @@ class TodoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => ['required', 'integer', 'exists:users,id'],
+            // 'user_id' => ['required', 'integer', 'exists:users,id'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'slug' => ['string', 'max:255'],
             'body' => ['required', 'string', 'max:255'],

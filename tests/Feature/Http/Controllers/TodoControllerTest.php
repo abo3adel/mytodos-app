@@ -31,13 +31,13 @@ it('saves on store', function () {
     $body = $this->faker->word;
 
     $response = $this->post(route('todo.store'), [
-        'user_id' => $user->id,
+        // 'user_id' => $user->id,
         'category_id' => $category->id,
         'body' => $body,
     ]);
 
     $todos = Todo::query()
-        ->where('user_id', $user->id)
+        // ->where('user_id', $user->id)
         ->where('category_id', $category->id)
         ->where('body', $body)
         ->get();
@@ -71,7 +71,7 @@ it('update behaves as expected', function () {
     $body = $this->faker->word;
 
     $response = $this->put(route('todo.update', $todo), [
-        'user_id' => $user->id,
+        // 'user_id' => $user->id,
         'category_id' => $category->id,
         'body' => $body,
     ]);
@@ -81,7 +81,7 @@ it('update behaves as expected', function () {
     $response->assertOK();
     $response->assertJsonStructure([]);
 
-    expect($todo->user_id)->toBe($user->id);
+    // expect($todo->user_id)->toBe($user->id);
     expect($todo->category_id)->toBe($category->id);
     expect($todo->body)->toBe($body);
 });

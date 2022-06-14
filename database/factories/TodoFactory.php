@@ -25,10 +25,10 @@ class TodoFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
+            // 'user_id' => User::factory(),
+            'category_id' => fn() => Category::factory(),
             'slug' => $this->faker->slug,
-            'body' => $this->faker->regexify('[A-Za-z0-9]{255}'),
+            'body' => $this->faker->sentence,
         ];
     }
 }

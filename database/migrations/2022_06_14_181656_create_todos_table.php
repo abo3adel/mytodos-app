@@ -15,12 +15,15 @@ class CreateTodosTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create("todos", function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->constrained();
-            $table->string('slug', 255)->nullable();
-            $table->string('body', 255);
+            // $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table
+                ->foreignId("category_id")
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->string("slug", 255)->nullable();
+            $table->string("body", 255);
             $table->timestamps();
         });
 
@@ -34,6 +37,6 @@ class CreateTodosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists("todos");
     }
 }

@@ -8,12 +8,12 @@ models:
             belongsTo: User
 
     Todo:
-        user_id: foreign:users OnDelete:cascade
+        # user_id: foreign:users OnDelete:cascade
         category_id: foreign:categories
         slug: string:255 nullable
         body: string:255
         relationships:
-            belongsTo: Category, User
+            belongsTo: Category
             belongsToMany: Tag
 
     Tag:
