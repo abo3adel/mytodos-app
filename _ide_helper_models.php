@@ -12,6 +12,51 @@
 
 namespace App\Models{
 /**
+ * App\Models\Category
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Todo[] $todos
+ * @property-read int|null $todos_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\CategoryFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Tag
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Todo[] $todos
+ * @property-read int|null $todos_count
+ * @method static \Database\Factories\TagFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ */
+	class Tag extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Todo
+ *
+ * @property-read \App\Models\Category|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\TodoFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Todo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Todo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Todo query()
+ */
+	class Todo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
