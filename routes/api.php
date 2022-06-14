@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('category', App\Http\Controllers\CategoryController::class);
+Route::apiResource('category', App\Http\Controllers\Api\CategoryController::class);
 
-Route::apiResource('todo', App\Http\Controllers\TodoController::class);
+Route::apiResource('todo', App\Http\Controllers\Api\TodoController::class);
 
-Route::apiResource('tag', App\Http\Controllers\TagController::class);
+Route::apiResource('tag', App\Http\Controllers\Api\TagController::class);

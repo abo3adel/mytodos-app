@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Requests\CategorrStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;

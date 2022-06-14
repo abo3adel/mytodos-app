@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\Api\TagController;
 use App\Http\Requests\TagControllerStoreRequest;
 use App\Http\Requests\TagControllerUpdateRequest;
 use App\Models\Tag;
