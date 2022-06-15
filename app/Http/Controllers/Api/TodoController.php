@@ -7,11 +7,17 @@ use App\Http\Requests\TodoStoreRequest;
 use App\Http\Requests\TodoUpdateRequest;
 use App\Http\Resources\TodoCollection;
 use App\Http\Resources\TodoResource;
+use App\Models\Category;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+    const VALIDATION_RULES = [
+        "body" => "required|string|max:255",
+        "category_slug" => "required|string|exists:categories,slug",
+    ];
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \App\Http\Resources\TodoCollection
@@ -27,9 +33,17 @@ class TodoController extends Controller
      * @param \App\Http\Requests\TodoStoreRequest $request
      * @return \App\Http\Resources\TodoResource
      */
-    public function store(TodoStoreRequest $request)
+    public function store(Request $request)
     {
-        $todo = Todo::create($request->validated());
+        $req = (object) $request->validate(self::VALIDATION_RULES);
+
+        $todo = Todo::create([
+            "body" => $req->body,
+            "category_id" => Category::where(
+                "slug",
+                $req->category_slug
+            )->firstOrFail("id")->id,
+        ]);
 
         return new TodoResource($todo);
     }

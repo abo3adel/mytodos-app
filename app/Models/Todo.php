@@ -15,9 +15,7 @@ class Todo extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'category_id',
-        'slug',
         'body',
         'done',
     ];
@@ -29,7 +27,6 @@ class Todo extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'user_id' => 'integer',
         'category_id' => 'integer',
         'done' => 'boolean',
     ];

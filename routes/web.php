@@ -22,12 +22,15 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-
-Route::get("/home", [
-    App\Http\Controllers\HomeController::class,
-    "index",
-])->name("home")->middleware('auth');
+Route::get("/home", [App\Http\Controllers\HomeController::class, "index"])
+    ->name("home")
+    ->middleware("auth");
 
 Route::resource("todo", TodoController::class);
 Route::resource("category", CategoryController::class);
 Route::resource("tag", TagController::class);
+
+Route::apiResource(
+    "/api/todos",
+    App\Http\Controllers\Api\TodoController::class
+)->middleware("auth");

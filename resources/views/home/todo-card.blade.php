@@ -1,6 +1,6 @@
 <div class="col">
     <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;" x-data="{
-        tab: 'all',
+        tab: 'active',
     }">
         <div class="card-body py-4 px-4 px-md-5">
 
