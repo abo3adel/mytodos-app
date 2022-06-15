@@ -19,3 +19,13 @@
         radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
     background-blend-mode: screen, color-dodge, overlay, difference, normal;
 }
+#list1 .form-control {
+    border-color: transparent;
+}
+#list1 .form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+#list1 .select-input.form-control[readonly]:not([disabled]) {
+    background-color: #fbfbfb;
+}

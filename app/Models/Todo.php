@@ -19,6 +19,7 @@ class Todo extends Model
         'category_id',
         'slug',
         'body',
+        'done',
     ];
 
     /**
@@ -30,6 +31,7 @@ class Todo extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'category_id' => 'integer',
+        'done' => 'boolean',
     ];
 
     public function category()

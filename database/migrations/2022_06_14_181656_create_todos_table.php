@@ -24,6 +24,7 @@ class CreateTodosTable extends Migration
                 ->cascadeOnDelete();
             // $table->string("slug", 255)->nullable();
             $table->string("body", 255);
+            $table->boolean('done')->default(false);
             $table->timestamps();
         });
 

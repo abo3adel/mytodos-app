@@ -29,6 +29,7 @@ class TodoFactory extends Factory
             'category_id' => fn() => Category::factory(),
             // 'slug' => $this->faker->slug,
             'body' => $this->faker->sentence,
+            'done' => $this->faker->boolean,
         ];
     }
 }

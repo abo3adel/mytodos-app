@@ -20,6 +20,7 @@ class TodoResource extends JsonResource
             'category_id' => $this->category_id,
             'slug' => $this->slug,
             'body' => $this->body,
+            'done' => $this->done,
             'tags' => TagCollection::make($this->whenLoaded('tags')),
         ];
     }
