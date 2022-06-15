@@ -16,9 +16,6 @@ class TodoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'category_id' => $this->category_id,
-            'slug' => $this->slug,
             'body' => $this->body,
             'done' => $this->done,
             'tags' => TagCollection::make($this->whenLoaded('tags')),

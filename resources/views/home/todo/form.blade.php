@@ -5,24 +5,40 @@
     save: async function() {
         if (this.saving) return;
         this.saving = true;
+        this.error = '';
 
-        const res = await axios.post('/todos', {
+        const res = await axios.post('/api/todos', {
             body: this.body,
             category_slug: this.activeCategory
-        });
+        }).catch(err => this.error = err.response ? err.response.data.errors.body[0] : '');
+
+        this.saving = false;
+        if (!res || !res.data) {
+            $dispatch('notice', {type: 'error', text: 'Error Saving TODO'})
+            return;
+        }
+
+        this.body = '';
+        $dispatch('add-todo', res.data.data)
+        $dispatch('notice', {type: 'success', text: 'Saved Successfully'})
     },
 }">
     {{-- <h1 x-text='activeCategory'></h1> --}}
     <div class="card">
         <div class="card-body">
             <div class="d-flex flex-row align-items-center">
-                <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                    placeholder="Add new..." x-model='body'>
-
                 <div>
-                    <button type="button" class="btn btn-primary" x-on:click="save" x-bind:disabled="!body.length || saving">
+                    <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                        placeholder="Add new..." x-model.trim='body' x-on:keydown.enter="save">
+                    <div class="invalid-feedback" style="display: block" x-text="error">
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" x-on:click.prevent="save"
+                        x-bind:disableda="!body.length || saving">
                         <template x-if="saving">
-                            <div class="spinner-border text-light mx-1" role="status">
+                            <div class="spinner-border text-light mx-1" role="status"
+                                style="width: 1.5rem;height: 1.5rem">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </template>

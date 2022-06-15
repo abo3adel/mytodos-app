@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row" x-data="{
         todos: [{}],
-        loading: true,
+        loading: false,
         activeCategory: '',
         loadTodos: async function (categorySlug) {
+            if (this.loading || this.activeCategory === categorySlug) return; 
             const res = await axios.get('/api/category/' + categorySlug);
 
-            {{-- console.log(res, res.data, this.todos) --}}
-
             this.loading = false;
+            this.activeCategory = categorySlug;
             if (!res || !res.data.data) {
                 $dispatch('notice', {type: 'error', text: 'Error loading todos'})
                 return;
@@ -19,7 +19,7 @@
 
             this.todos = res.data.data.todos.data
         },
-    }">
+    }" x-on:add-todo.window="todos.push($event.detail)">
         <div class="col-3 px-0">
             @include('home.categories-list')
         </div>
