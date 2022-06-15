@@ -27,7 +27,7 @@ class TodoFactory extends Factory
         return [
             // 'user_id' => User::factory(),
             'category_id' => fn() => Category::factory(),
-            'slug' => $this->faker->slug,
+            // 'slug' => $this->faker->slug,
             'body' => $this->faker->sentence,
         ];
     }

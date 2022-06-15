@@ -26,7 +26,7 @@ class TodoUpdateRequest extends FormRequest
         return [
             // 'user_id' => ['required', 'integer', 'exists:users,id'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
-            'slug' => ['string', 'max:255'],
+            // 'slug' => ['string', 'max:255'],
             'body' => ['required', 'string', 'max:255'],
         ];
     }

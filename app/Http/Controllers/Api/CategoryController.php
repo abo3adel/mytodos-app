@@ -42,6 +42,8 @@ class CategoryController extends Controller
      */
     public function show(Request $request, Category $category)
     {
+        $category->loadMissing('todos');
+
         return new CategoryResource($category);
     }
 

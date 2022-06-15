@@ -25,6 +25,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "alpinejs": "^3.10.2",
         "laravel-mix-purgecss": "^6.0.0",
         "laravel-mix-swc": "^0.3.0"
     }

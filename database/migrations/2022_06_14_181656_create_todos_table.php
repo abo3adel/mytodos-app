@@ -22,7 +22,7 @@ class CreateTodosTable extends Migration
                 ->foreignId("category_id")
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string("slug", 255)->nullable();
+            // $table->string("slug", 255)->nullable();
             $table->string("body", 255);
             $table->timestamps();
         });
