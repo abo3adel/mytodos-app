@@ -3,7 +3,7 @@
     body: '',
     error: '',
     save: async function() {
-        if (this.saving) return;
+        if (this.saving || !this.body.length) return;
         this.saving = true;
         this.error = '';
 
@@ -27,15 +27,11 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex flex-row align-items-center">
-                <div>
-                    <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                        placeholder="Add new..." x-model.trim='body' x-on:keydown.enter="save">
-                    <div class="invalid-feedback" style="display: block" x-text="error">
-                    </div>
-                </div>
+                <input type="text" class="form-control form-control-lg" id="todo-body"
+                    placeholder="Add new..." x-model.trim='body' x-on:keydown.enter="save" />
                 <div>
                     <button type="button" class="btn btn-primary" x-on:click.prevent="save"
-                        x-bind:disableda="!body.length || saving">
+                        x-bind:disabled="!body.length || saving">
                         <template x-if="saving">
                             <div class="spinner-border text-light mx-1" role="status"
                                 style="width: 1.5rem;height: 1.5rem">
@@ -47,6 +43,8 @@
                         </template>
                     </button>
                 </div>
+            </div>
+            <div class="invalid-feedback" style="display: block" x-text="error">
             </div>
         </div>
     </div>
