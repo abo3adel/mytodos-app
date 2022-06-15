@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TodoStoreRequest;
-use App\Http\Requests\TodoUpdateRequest;
 use App\Http\Resources\TodoCollection;
 use App\Http\Resources\TodoResource;
 use App\Models\Category;
 use App\Models\Todo;
+use Auth;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class TodoController extends Controller
 {
     const VALIDATION_RULES = [
         "body" => "required|string|max:255",
         "category_slug" => "required|string|exists:categories,slug",
+        "done" => "sometimes|nullable|boolean",
     ];
 
     /**
@@ -37,12 +38,19 @@ class TodoController extends Controller
     {
         $req = (object) $request->validate(self::VALIDATION_RULES);
 
+        $category = Category::where("slug", $req->category_slug)->first([
+            "id",
+            "user_id",
+        ]);
+
+        abort_unless(
+            Auth::id() === $category->user_id,
+            Response::HTTP_UNAUTHORIZED
+        );
+
         $todo = Todo::create([
             "body" => $req->body,
-            "category_id" => Category::where(
-                "slug",
-                $req->category_slug
-            )->firstOrFail("id")->id,
+            "category_id" => $category->id,
         ]);
 
         return new TodoResource($todo);
@@ -63,11 +71,25 @@ class TodoController extends Controller
      * @param \App\Models\Todo $todo
      * @return \App\Http\Resources\TodoResource
      */
-    public function update(TodoUpdateRequest $request, Todo $todo)
+    public function update(Request $request, Todo $todo)
     {
-        $todo->update($request->validated());
+        $req = (object) $request->validate(self::VALIDATION_RULES);
 
-        return new TodoResource($todo);
+        $category = Category::where("slug", $req->category_slug)->first([
+            "user_id",
+        ]);
+
+        abort_unless(
+            Auth::id() === $category->user_id,
+            Response::HTTP_UNAUTHORIZED
+        );
+
+        $todo->update([
+            "body" => $req->body,
+            "done" => $req->done,
+        ]);
+
+        return response()->noContent();
     }
 
     /**

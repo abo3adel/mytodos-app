@@ -19,7 +19,15 @@
 
             this.todos = res.data.data.todos.data
         },
-    }" x-on:add-todo.window="todos.push($event.detail)">
+        completeTodo: function(tid) {
+            
+        },
+    }" x-on:add-todo.window="todos.push($event.detail)" x-on:complete-todo.window="todos.map(x => {
+        if (x.id === $event.detail) {
+            x.done = !x.done;
+        }
+        return x;
+    })">
         <div class="col-3 px-0">
             @include('home.categories-list')
         </div>

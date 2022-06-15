@@ -33,16 +33,33 @@ it("todo has errors if store data not supplied", function () {
         ->assertStatus(422);
 });
 
-it("todo saves on store", function () {
-    $user = User::factory()->create();
-    $category = Category::factory()->create();
+it("only category owner can add todo to it", function () {
+    $user = User::factory()
+        ->has(Category::factory())
+        ->create();
+    $category = Category::latest()->first();
     $body = $this->faker->word;
 
-    $response = actingAs($user)->postJson(route("todos.store"), [
-        // 'user_id' => $user->id,
-        "category_slug" => $category->slug,
-        "body" => $body,
-    ])
+    $response = actingAs()
+        ->postJson(route("todos.store"), [
+            // 'user_id' => $user->id,
+            "category_slug" => $category->slug,
+            "body" => $body,
+        ])
+        ->assertUnAuthorized();
+});
+
+it("todo saves on store", function () {
+    $user = User::factory()->has(Category::factory())->create();
+    $category = Category::latest()->first();
+    $body = $this->faker->word;
+
+    $response = actingAs($user)
+        ->postJson(route("todos.store"), [
+            // 'user_id' => $user->id,
+            "category_slug" => $category->slug,
+            "body" => $body,
+        ])
         ->assertCreated()
         ->assertJsonStructure([]);
 
@@ -66,32 +83,54 @@ it("show behaves as expected", function () {
     $response->assertJsonStructure([]);
 });
 
-it("uses form request validation on update")->assertActionUsesFormRequest(
-    TodoController::class,
-    "update",
-    TodoUpdateRequest::class
-);
+it("todo will not update for un logged in user", function () {
+    $this->putJson(
+        route("todos.update", Todo::factory()->create()),
+        []
+    )->assertStatus(401);
+});
 
-it("update behaves as expected", function () {
-    $todo = Todo::factory()->create();
-    $user = User::factory()->create();
-    $category = Category::factory()->create();
+it("only todo owner can update it", function () {
+    $user = User::factory()
+        ->has(Category::factory())
+        ->create();
+    $category = Category::latest()->first();
+    $todo = $category->todos()->save(Todo::factory()->make());
+
+    $response = actingAs()
+        ->putJson(route("todo.update", $todo), [
+            // 'user_id' => $user->id,
+            "category_slug" => $category->slug,
+            "body" => $this->faker->word,
+            "done" => $this->faker->boolean,
+        ])
+        ->assertUnAuthorized();
+});
+
+it("update todo behaves as expected", function () {
+    $user = User::factory()
+        ->has(Category::factory())
+        ->create();
+    $category = Category::latest()->first();
+    $todo = $category->todos()->save(Todo::factory()->make());
     $body = $this->faker->word;
+    $done = $this->faker->boolean;
 
-    $response = $this->put(route("todo.update", $todo), [
-        // 'user_id' => $user->id,
-        "category_id" => $category->id,
-        "body" => $body,
-    ]);
+    $response = actingAs($user)
+        ->putJson(route("todo.update", $todo), [
+            // 'user_id' => $user->id,
+            "category_slug" => $category->slug,
+            "body" => $body,
+            "done" => $done,
+        ])
+        ->assertNoContent();
 
     $todo->refresh();
 
-    $response->assertOK();
-    $response->assertJsonStructure([]);
-
-    // expect($todo->user_id)->toBe($user->id);
-    expect($todo->category_id)->toBe($category->id);
-    expect($todo->body)->toBe($body);
+    expect($todo)
+        ->category_id->toBe($category->id)
+        ->body->toBe($body)
+        ->done->toBe($done);
 });
 
 it("deletes and responds with on destroy", function () {

@@ -20,7 +20,7 @@
 
         this.body = '';
         $dispatch('add-todo', res.data.data)
-        $dispatch('notice', {type: 'success', text: 'Saved Successfully'})
+        $dispatch('notice', {type: 'success', text: 'Saved'})
     },
 }">
     {{-- <h1 x-text='activeCategory'></h1> --}}
