@@ -33,10 +33,10 @@
         $dispatch('notice', {type: 'success', text: 'Saved'})
     },
 }">
-    <div class="card">
+    <div class="card bg-blur">
         <div class="card-body">
             <div class="d-flex flex-row align-items-center">
-                <input type="text" class="form-control form-control-lg" id="todo-body" placeholder="Add new..."
+                <input type="text" class="form-control form-control-lg border-dark" id="todo-body" placeholder="Add new..."
                     x-model.trim='body' x-on:keydown.enter="save" />
                 <div>
                     <button type="button" class="btn btn-primary" x-on:click.prevent="save"
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="First group">
                     <input type="radio" class="btn-check" name="btnradio" id="urgent-tag" autocomplete="off" x-bind:disapled="saving" x-model.trim="tag" value="1">
                     <label style="text-transform: uppercase;" class="btn btn-outline-danger" for="urgent-tag">Urgent</label>

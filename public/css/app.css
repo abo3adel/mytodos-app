@@ -10280,10 +10280,31 @@ textarea.form-control-lg {
 }
 
 #list1 .form-control:focus {
-  border-color: transparent;
-  box-shadow: none;
+    // border-color: transparent;
+    box-shadow: none;
+}
+#list1 .form-control {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+.bg-blur {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.bi {
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+    width: 1em;
+    height: 1em;
 }
 
-#list1 .select-input.form-control[readonly]:not([disabled]) {
-  background-color: #fbfbfb;
+.category-list .list-group-item, .category-list .list-group-item:hover{
+	   background-color: #fff6;
+	   transition: all .2s ease-in-out;
+	}
+.category-list .list-group-item:hover {
+	color: #fff;
+}
+
+.category-list .list-group-item.active {
+background-color: #03a9f470;	
 }

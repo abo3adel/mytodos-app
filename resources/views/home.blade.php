@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid px-3">
     <div class="row" x-data="{
         todos: [{}],
         loading: false,
@@ -28,10 +28,10 @@
         }
         return x;
     })">
-        <div class="col-3 px-0">
+        <div class="col-10 col-md-3 px-0">
             @include('home.categories-list')
         </div>
-        <div class="col-9"
+        <div class="col-12 col-md-9"
             x-init="loadTodos('{{ $categories->first()->slug }}');activeCategory = '{{ $categories->first()->slug }}'">
 
             <div>
