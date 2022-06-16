@@ -1,6 +1,10 @@
 <div class="col">
     <div class="card bg-blur" id="list1" style="border-radius: .75rem;" x-data="{
         tab: 'active',
+        todosLength: 5,
+        setTab: function (id) {
+            this.tab = id;
+        },
     }">
         <div class="card-body py-4 px-4">
 

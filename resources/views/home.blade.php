@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid px-3">
     <div class="row" x-data="{
-        todos: [{}],
+        todos: [],
         loadingTodos: false,
         activeCategory: '',
         loadTodos: async function (categorySlug) {
