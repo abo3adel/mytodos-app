@@ -35,13 +35,30 @@
             </a>
         </li>
     </ul>
-    <div class="d-flex justify-content-end align-items-center col-3">
-        <p class="small mb-0 ms-4 me-2 text-muted">Tag</p>
-        <select class="select">
-            <option value="1">Added date</option>
-            <option value="2">Due date</option>
+    <div class="d-flex justify-content-end align-items-center col-3" x-data="{
+        tags: [
+            {title: 'urgent', value: 'urgent', id: 1},
+            {title: 'easy', value: 'easy', id: 2},
+            {title: 'needs help', value: 'needs_help', id: 3},
+        ],
+        tagVal: 'all',
+        oldTodos: [...todos],
+        filterByTag: function() {            
+            if (this.tagVal === 'all') {
+                this.todos = [...this.oldTodos];
+            } else {
+                this.todos = [...this.oldTodos.filter(x => (x.tags && x.tags.data && x.tags.data[0] && x.tags.data[0].id) == this.tagVal)];
+            }
+        },
+    }" x-init="setTimeout(() => {oldTodos = [...todos];}, 500)">
+        <p class="small mb-0 ms-4 me-2">
+            @include('icons.funnel-fill')
+        </p>
+        <select class="select" x-model="tagVal" x-on:change.prevent='filterByTag'>
+            <option value="all">All</option>
+            <template x-for="tag in tags" :key="tag.id">
+                <option x-bind:value="tag.id" x-text="tag.title"></option>
+            </template>
         </select>
-        <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i
-                class="fas fa-sort-amount-down-alt ms-2"></i></a>
     </div>
 </div>
