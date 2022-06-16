@@ -28,8 +28,8 @@
         this.body = '';
         this.user_tag = '';
         this.tag = null;
-        console.log(res.data.data);
-        $dispatch('add-todo', res.data.data)
+        {{-- console.log(res.data.data); --}}
+        $dispatch('add-todo', {slug: this.activeCategory, todo: res.data.data})
         $dispatch('notice', {type: 'success', text: 'Saved'})
     },
 }">

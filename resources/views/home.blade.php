@@ -22,12 +22,12 @@
         completeTodo: function(tid) {
             
         },
-    }" x-on:add-todo.window="todos.push($event.detail)" x-on:complete-todo.window="todos.map(x => {
+    }" x-on:add-todo.window="todos.push($event.detail.todo)" x-on:complete-todo.window="todos.map(x => {
         if (x.id === $event.detail) {
             x.done = !x.done;
         }
         return x;
-    })">
+    })" x-on:delete-todo.window="todos.splice(todos.findIndex(x => x.id === $event.detail.id), 1)">
         <div class="col-10 col-md-3 px-0">
             @include('home.categories-list')
         </div>
