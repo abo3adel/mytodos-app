@@ -51,3 +51,8 @@
 .category-list .list-group-item.active {
 background-color: #03a9f470;	
 }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+	color: #fff;
+	background-color: #007fffb0;
+}
