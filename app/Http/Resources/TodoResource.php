@@ -2,10 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Tag;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TodoResource extends JsonResource
 {
+    private ?Tag $addedTag = null;
+
     /**
      * Transform the resource into an array.
      *
@@ -15,10 +18,20 @@ class TodoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'body' => $this->body,
-            'done' => $this->done,
-            'tags' => TagCollection::make($this->whenLoaded('tags')),
+            "id" => $this->id,
+            "body" => $this->body,
+            "done" => $this->done,
+            "user_tag" => $this->user_tag,
+            "tags" =>
+                null === $this->addedTag
+                    ? TagCollection::make($this->whenLoaded("tags"))
+                    : collect(["data" => [$this->addedTag]]),
         ];
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        $this->addedTag = $tag;
+        return $this;
     }
 }

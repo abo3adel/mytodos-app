@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TodoCollection;
 use App\Http\Resources\TodoResource;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Models\Todo;
 use Auth;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ class TodoController extends Controller
         "body" => "required|string|max:255",
         "category_slug" => "required|string|exists:categories,slug",
         "done" => "sometimes|nullable|boolean",
+        'user_tag' => 'sometimes|nullable|string|max:10',
+        'tag' => 'sometimes|nullable|integer|min:1|max:3|exists:tags,id',
     ];
 
     /**
@@ -51,7 +54,14 @@ class TodoController extends Controller
         $todo = Todo::create([
             "body" => $req->body,
             "category_id" => $category->id,
+            'user_tag' => $req->user_tag,
         ]);
+
+        // save default website tags
+        if (property_exists($req, 'tag')) {
+            $tag = $todo->tags()->save(Tag::find($req->tag));
+            return (new TodoResource($todo))->addTag($tag);
+        }
 
         return new TodoResource($todo);
     }

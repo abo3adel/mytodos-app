@@ -25,6 +25,7 @@ class CreateTodosTable extends Migration
             // $table->string("slug", 255)->nullable();
             $table->string("body", 255);
             $table->boolean('done')->default(false);
+            $table->string('user_tag')->nullable();
             $table->timestamps();
         });
 

@@ -34,6 +34,14 @@
                     x-bind:id="t.id" x-bind:checked="t.done" x-bind:disabled="updating == t.id" x-on:click.prevent="complete(t.id, t.body, t.done)" />
                 <label :for="t.id" class="lead fw-normal mb-0 bg-light w-100 ms-n2 ps-2 py-1 rounded"
                     x-text="t.body" x-on:click.prevent="complete(t.id, t.body, t.done)"></label>
+                    <template x-for='tag in (t.tags || {data: []}).data' :key='tag.id'>
+                        <span class="badge bg-primary mx-1" x-text='tag.title' x-bind:class="{
+                            'bg-danger': tag.id === 1,
+                            'bg-success': tag.id === 2,
+                            'bg-info': tag.id === 3,
+                        }"></span>
+                    </template>
+                    <span class="badge bg-primary mx-1" x-text='t.user_tag'></span>
             </li>
         </template>
     </template>

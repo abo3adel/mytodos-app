@@ -50,15 +50,19 @@ it("only category owner can add todo to it", function () {
 });
 
 it("todo saves on store", function () {
-    $user = User::factory()->has(Category::factory())->create();
+    $user = User::factory()
+        ->has(Category::factory())
+        ->create();
     $category = Category::latest()->first();
     $body = $this->faker->word;
+    $tag = $this->faker->word;
 
     $response = actingAs($user)
         ->postJson(route("todos.store"), [
             // 'user_id' => $user->id,
             "category_slug" => $category->slug,
             "body" => $body,
+            "user_tag" => $tag,
         ])
         ->assertCreated()
         ->assertJsonStructure([]);
@@ -70,7 +74,9 @@ it("todo saves on store", function () {
     expect($todos)
         ->toHaveCount(1)
         ->first()
-        ->body->toBe($body);
+        ->body->toBe($body)
+        ->first()
+        ->user_tag->toBe($tag);
     // $todo = $todos->first();
 });
 

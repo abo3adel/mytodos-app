@@ -30,6 +30,7 @@ class TodoFactory extends Factory
             // 'slug' => $this->faker->slug,
             'body' => $this->faker->sentence,
             'done' => $this->faker->boolean,
+            'user_tag' => !!random_int(0, 1) ? $this->faker->word : null,
         ];
     }
 }

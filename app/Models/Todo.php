@@ -18,6 +18,7 @@ class Todo extends Model
         'category_id',
         'body',
         'done',
+        'user_tag',
     ];
 
     /**

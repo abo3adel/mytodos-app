@@ -42,7 +42,7 @@ class CategoryController extends Controller
      */
     public function show(Request $request, Category $category)
     {
-        $category->loadMissing('todos');
+        $category->loadMissing('todos.tags');
 
         return new CategoryResource($category);
     }
