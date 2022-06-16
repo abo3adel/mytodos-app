@@ -43,12 +43,16 @@
         ],
         tagVal: 'all',
         oldTodos: [...todos],
-        filterByTag: function() {            
+        filterByTag: function() {
+            this.loadingTodos = true;
+
             if (this.tagVal === 'all') {
                 this.todos = [...this.oldTodos];
             } else {
                 this.todos = [...this.oldTodos.filter(x => (x.tags && x.tags.data && x.tags.data[0] && x.tags.data[0].id) == this.tagVal)];
             }
+
+            setTimeout(() => this.loadingTodos = false, 250);
         },
     }" x-init="setTimeout(() => {oldTodos = [...todos];}, 500)">
         <p class="small mb-0 ms-4 me-2">

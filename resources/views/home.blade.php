@@ -4,13 +4,14 @@
 <div class="container-fluid px-3">
     <div class="row" x-data="{
         todos: [{}],
-        loading: false,
+        loadingTodos: false,
         activeCategory: '',
         loadTodos: async function (categorySlug) {
-            if (this.loading || this.activeCategory === categorySlug) return; 
+            if (this.loadingTodos || this.activeCategory === categorySlug) return;
+            this.loadingTodos = true;
             const res = await axios.get('/api/category/' + categorySlug);
 
-            this.loading = false;
+            this.loadingTodos = false;
             this.activeCategory = categorySlug;
             if (!res || !res.data.data) {
                 $dispatch('notice', {type: 'error', text: 'Error loading todos'})
