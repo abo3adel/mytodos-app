@@ -6,7 +6,9 @@
                 <div class="d-inline-block">
                     @include('icons.check_list')
                 </div>
-                All
+                <span class="d-none d-sm-inline-block">
+                    All
+                </span>
             </a>
         </li>
         <li class="nav-item" role="presentation">
@@ -16,7 +18,9 @@
                 <div class="d-inline-block">
                     @include('icons.patch-exclamation-fill')
                 </div>
-                Active
+                <span class="d-none d-sm-inline-block">
+                    Active
+                </span>
             </a>
         </li>
         <li class="nav-item" role="presentation">
@@ -25,7 +29,9 @@
                 <div class="d-inline-block">
                     @include('icons.patch-check')
                 </div>
-                Completed
+                <span class="d-none d-sm-inline-block">
+                    Completed
+                </span>
             </a>
         </li>
     </ul>

@@ -66,7 +66,7 @@
                     <label style="text-transform: uppercase;" class="btn btn-outline-success" for="easy-tag">easy</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="help-tag" autocomplete="off" x-bind:disapled="saving" x-model.trim="tag" value="3">
-                    <label style="text-transform: uppercase;" class="btn btn-outline-info" for="help-tag">needs help!</label>
+                    <label style="text-transform: uppercase;" class="btn btn-outline-info text-white" for="help-tag">needs help!</label>
                 </div>
                 <div class="input-group mb-2">
                     <div class="input-group-text" id="user-defined-tag">#</div>
