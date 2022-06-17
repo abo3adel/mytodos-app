@@ -29,7 +29,7 @@
         }
         return x;
     })" x-on:delete-todo.window="todos.splice(todos.findIndex(x => x.id === $event.detail.id), 1)">
-        <div class="col-10 col-md-3 px-0">
+        <div class="col-0 col-md-3 px-0 d-none d-md-block">
             @include('home.categories-list')
         </div>
         <div class="col-12 col-md-9"
