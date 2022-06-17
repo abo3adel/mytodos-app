@@ -10280,7 +10280,7 @@ textarea.form-control-lg {
   --border-color: rgba(113 119 144 / 25%);
   --theme-color: #f9fafb;
   --inactive-color: rgb(113 119 144 / 78%);
-  --body-font: "Poppins", sans-serif;
+  --body-font: "Cairo", sans-serif;
   --hover-menu-bg: rgba(12 15 25 / 30%);
   --content-title-color: #999ba5;
   --content-bg: rgb(146 151 179 / 13%);
@@ -10316,16 +10316,13 @@ html {
 
 body {
   font-family: var(--body-font);
-  background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+  background-image: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2em;
-  width: 100%;
-  height: 100vh;
 }
 @media screen and (max-width: 480px) {
   body {
@@ -10602,9 +10599,8 @@ body.light-mode .video-bg:before {
 }
 
 .left-side {
-  flex-basis: 240px;
   border-right: 1px solid var(--border-color);
-  padding: 26px;
+  padding: 1rem;
   overflow: auto;
   flex-shrink: 0;
 }
@@ -10639,7 +10635,7 @@ body.light-mode .video-bg:before {
   border-radius: 6px;
   transition: 0.3s;
 }
-.side-menu a:hover {
+.side-menu a:hover, .side-menu a.active {
   background-color: var(--hover-menu-bg);
 }
 .side-menu svg {
