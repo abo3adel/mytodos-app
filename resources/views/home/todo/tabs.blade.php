@@ -1,8 +1,8 @@
-<div class="mb-4 pb-2 row">
-    <ul class="nav nav-tabs col-9" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" x-bind:class="{'active': tab === 'all'}" id="ex1-tab-1" data-mdb-toggle="tab" href="#"
-                role="tab" aria-controls="ex1-tabs-1" aria-selected="false" x-on:click.prevent="setTab('all')">
+<div class="row">
+    <div class="col-9">
+        <div class="header-menu">
+            <a class="menu-header-main" x-bind:class="{'is-active': tab === 'all'}" id="ex1-tab-1" data-mdb-toggle="tab"
+                href="#" role="tab" aria-controls="ex1-tabs-1" aria-selected="false" x-on:click.prevent="setTab('all')">
                 <div class="d-inline-block">
                     @include('icons.check_list')
                 </div>
@@ -10,9 +10,7 @@
                     All
                 </span>
             </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" x-bind:class="{'active': tab === 'active'}" id="ex1-tab-2" data-mdb-toggle="tab"
+            <a class="main-header-link" x-bind:class="{'is-active': tab === 'active'}" id="ex1-tab-2" data-mdb-toggle="tab"
                 href="#" role="tab" aria-controls="ex1-tabs-2" aria-selected="false"
                 x-on:click.prevent='setTab("active")'>
                 <div class="d-inline-block">
@@ -22,10 +20,9 @@
                     Active
                 </span>
             </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" x-bind:class="{'active': tab === 'done'}" id="ex1-tab-3" data-mdb-toggle="tab" href="#"
-                role="tab" aria-controls="ex1-tabs-3" aria-selected="false" x-on:click.prevent='setTab("done")'>
+            <a class="main-header-link" x-bind:class="{'is-active': tab === 'done'}" id="ex1-tab-3" data-mdb-toggle="tab"
+                href="#" role="tab" aria-controls="ex1-tabs-3" aria-selected="false"
+                x-on:click.prevent='setTab("done")'>
                 <div class="d-inline-block">
                     @include('icons.patch-check')
                 </div>
@@ -33,8 +30,8 @@
                     Completed
                 </span>
             </a>
-        </li>
-    </ul>
+        </div>
+    </div>
     <div class="d-flex justify-content-end align-items-center col-3" x-data="{
         tags: [
             {title: 'urgent', value: 'urgent', id: 1},
