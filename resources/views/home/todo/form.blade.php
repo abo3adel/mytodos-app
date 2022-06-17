@@ -1,4 +1,4 @@
-<div class="pb-2" x-data="{
+<div class="pb-2 bg-blur" x-data="{
     saving: false,
     body: '',
     error: '',
@@ -33,7 +33,7 @@
         $dispatch('notice', {type: 'success', text: 'Saved'})
     },
 }">
-    <div class="card bg-blur">
+    <div class="card bg-transparent border-0">
         <div class="card-body">
             <div class="d-flex flex-row align-items-center">
                 <input type="text" class="form-control form-control-lg border-dark" id="todo-body" placeholder="Add new..."
@@ -60,10 +60,10 @@
             <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="First group">
                     <input type="radio" class="btn-check" name="btnradio" id="urgent-tag" autocomplete="off" x-bind:disapled="saving" x-model.trim="tag" value="1">
-                    <label style="text-transform: uppercase;" class="btn btn-outline-danger" for="urgent-tag">Urgent</label>
+                    <label style="text-transform: uppercase;" class="btn btn-outline-danger text-white" for="urgent-tag">Urgent</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="easy-tag" autocomplete="off" x-bind:disapled="saving" x-model.trim="tag" value="2">
-                    <label style="text-transform: uppercase;" class="btn btn-outline-success" for="easy-tag">easy</label>
+                    <label style="text-transform: uppercase;" class="btn btn-outline-success text-white" for="easy-tag">easy</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="help-tag" autocomplete="off" x-bind:disapled="saving" x-model.trim="tag" value="3">
                     <label style="text-transform: uppercase;" class="btn btn-outline-info text-white" for="help-tag">needs help!</label>

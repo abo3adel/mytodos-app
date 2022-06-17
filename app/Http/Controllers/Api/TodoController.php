@@ -58,7 +58,7 @@ class TodoController extends Controller
         ]);
 
         // save default website tags
-        if (property_exists($req, 'tag')) {
+        if (isset($req->tag)) {
             $tag = $todo->tags()->save(Tag::find($req->tag));
             return (new TodoResource($todo))->addTag($tag);
         }
