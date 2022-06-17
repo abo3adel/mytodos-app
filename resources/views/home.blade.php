@@ -38,11 +38,6 @@
             <div>
                 @include('home.todo-card')
             </div>
-
-            <button x-data x-on:click="$dispatch('notice', {type: 'error', text: 'Error!'})"
-                class="m-4 bg-red-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
-                Error
-            </button>
         </div>
     </div>
     <x-toast />

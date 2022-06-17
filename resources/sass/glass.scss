@@ -9,7 +9,7 @@
     --theme-bg-color: rgba(16 18 27 / 40%);
     --border-color: rgba(113 119 144 / 25%);
     --theme-color: #f9fafb;
-    --inactive-color: rgb(113 119 144 / 78%);
+    --inactive-color: #d7dae7cc;
     --body-font: "Cairo", sans-serif;
     --hover-menu-bg: rgba(12 15 25 / 30%);
     --content-title-color: #999ba5;
@@ -112,6 +112,9 @@ img {
     .dropdown.is-active ul {
         background-color: rgb(255 255 255 / 94%);
     }
+    .todo-header {
+      color: #14162b !important; 
+    }
 }
 
 body.light-mode:before,
@@ -132,19 +135,20 @@ body.light-mode .video-bg:before {
 
 .app {
     background-color: var(--theme-bg-color);
-    max-width: 1250px;
-    max-height: 860px;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    // overflow: hidden;
+    // max-width: 1250px;
+    // max-height: 860px;
+    min-height: 100vh;
+    min-width: 100vw;
+    // display: flex;
+    // flex-direction: column;
+    // // overflow: hidden;
     position: relative;
     width: 100%;
-    border-radius: 14px;
+    // border-radius: 14px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    font-size: 15px;
-    font-weight: 500;
+    // font-size: 15px;
+    // font-weight: 500;
 }
 
 .header {
@@ -407,7 +411,7 @@ body.light-mode .video-bg:before {
     //  padding: 20px 40px;
     //  height: 100%;
     // overflow: auto;
-    background-color: var(--theme-bg-color);
+    // background-color: var(--theme-bg-color);
     //  @media screen and (max-width: 510px) {
     //   padding: 20px;
     //  }

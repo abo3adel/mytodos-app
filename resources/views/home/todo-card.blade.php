@@ -32,7 +32,7 @@
  --}}
 
 
-<div class="main-container" id="list1" style="border-radius: .75rem;background-color: var(--content-bg);" x-data="{
+<div class="main-container" id="list1" style="border-radius: .75rem;" x-data="{
     tab: 'active',
     todosLength: 5,
     setTab: function (id) {
@@ -40,7 +40,7 @@
     },
 }">
     <div class="main-header justify-content-center">
-        <div class="h1 text-center text-white">
+        <div class="h1 text-center text-white todo-header">
             <div class="fs-1 d-inline-block">
                 @include('icons.check_list')
             </div>
@@ -55,7 +55,7 @@
             @include('home.todo.tabs')
 
             <div class="content-section-title"></div>
-            
+
             @include('home.todo.content')
         </div>
     </div>
