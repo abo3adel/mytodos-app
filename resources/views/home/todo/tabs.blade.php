@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-9">
         <div class="header-menu">
-            <a class="menu-header-main" x-bind:class="{'is-active': tab === 'all'}" id="ex1-tab-1" data-mdb-toggle="tab"
+            <a class="main-header-link" x-bind:class="{'is-active': tab === 'all'}" id="ex1-tab-1" data-mdb-toggle="tab"
                 href="#" role="tab" aria-controls="ex1-tabs-1" aria-selected="false" x-on:click.prevent="setTab('all')">
                 <div class="d-inline-block">
                     @include('icons.check_list')
