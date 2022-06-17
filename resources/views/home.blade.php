@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.glass')
 
 @section('content')
 <div class="container-fluid px-3">

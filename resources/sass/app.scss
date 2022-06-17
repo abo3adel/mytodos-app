@@ -7,6 +7,12 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+@import './glass.scss';
+
+.class {
+    color: red;
+}
+
 .gradient-custom {
     background: radial-gradient(
             50% 123.47% at 50% 50%,
@@ -30,7 +36,8 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 .bg-blur {
-    background-color: rgba(0, 0, 0, 0.15);
+    // background-color: rgba(0, 0, 0, 0.15);
+    background-color: transparent;
 }
 .bi {
     display: inline-block;

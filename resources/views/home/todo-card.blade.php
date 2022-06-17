@@ -1,5 +1,6 @@
 <div class="col">
-    <div class="card bg-blur" id="list1" style="border-radius: .75rem;" x-data="{
+    {{-- https://codepen.io/TurkAysenur/full/ZEpxeYm --}}
+    <div class="card bg-blur text-white" id="list1" style="border-radius: .75rem;background-color: var(--content-bg);" x-data="{
         tab: 'active',
         todosLength: 5,
         setTab: function (id) {
