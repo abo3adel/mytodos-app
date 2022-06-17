@@ -1,6 +1,6 @@
 <div>
     <template x-for="pl in placeholders" :key="pl + Math.random()">
-        <li class="px-0 py-3 row align-items-center flex-grow-1 border-0 bg-transparent border-bottom">
+        <li class="adope-products row m-0">
             <div class="px-0">
                 <div class="placeholder-glow">
                     <span class="placeholder px-1 px-md-3 px-lg-4 d-inline-block"></span>
