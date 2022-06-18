@@ -2,7 +2,28 @@
 
 @section('content')
 <div class="main-container" style="" x-data="{
-    categories: [],
+    editMode: '',
+    savingCat: false,
+    title: '',   
+    route: '{{ route('api.category.store') }}',
+    action: '{{ route('api.category.store') }}',
+    save: function() {
+        if (this.savingCat || !this.title.length || this.title.length <= 2) return;
+        this.savingCat = true;
+        this.$refs.form.submit();
+    },
+    enableEdit: function (title, slug) {
+        if (this.savingCat) return;
+
+        this.editMode = slug;
+        this.action = this.route + '/' + slug;
+        this.title = title;
+    },
+    cancleEdit: function () {
+        this.editMode = '';
+        this.action = this.route;
+        this.title = '';
+    },
 }">
     <div class="main-header justify-content-center">
         <div class="h1 text-center text-white todo-header">
@@ -32,7 +53,7 @@
                         </div>
                     </div>
                     <div class="app-card-buttons">
-                        <button class="btn btn-outline-info mx-1">
+                        <button class="btn btn-outline-info mx-1" x-on:click.prevent="enableEdit('{{$cat->title}}', '{{ $cat->slug }}')">
                             @include('icons.pencil')
                         </button>
                         <button class="btn btn-outline-danger">
