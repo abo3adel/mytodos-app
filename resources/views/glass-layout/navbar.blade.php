@@ -27,18 +27,18 @@
         </span>
     </a> --}}
 </div>
-<div class="header-profile">
+<div class="header-profile header-menu">
     <!-- Authentication Links -->
     @guest
         @if(Route::has('login'))
             {{-- <li class="nav-item"> --}}
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="menu-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             {{-- </li> --}}
         @endif
 
         @if(Route::has('register'))
             {{-- <li class="nav-item"> --}}
-            <a class="nav-link"
+            <a class="menu-link"
                 href="{{ route('register') }}">{{ __('Register') }}</a>
             {{-- </li> --}}
         @endif
