@@ -65,6 +65,11 @@
                             </div>
                         </div>
                     </form>
+
+                    <pre class="bg-dark text-danger mt-5 p-2">
+email: user@mytodos.com
+password: password
+                    </pre>
                 </div>
             </div>
         </div>

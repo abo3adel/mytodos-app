@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             ->has(Category::factory()->count(5))
             ->create([
                 "name" => "Ahmed Adel",
-                "email" => "admin@admin.com",
+                "email" => "user@mytodos.com",
             ]);
 
         Category::each(function (Category $category) {
