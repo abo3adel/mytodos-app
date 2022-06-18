@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         Category::each(function (Category $category) {
             $category->todos()->saveMany(
                 $todos = Todo::factory()
-                    ->count(random_int(5, 20))
+                    ->count(random_int(5, 10))
                     ->make()
             );
         });
