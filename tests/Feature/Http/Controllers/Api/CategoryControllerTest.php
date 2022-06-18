@@ -14,7 +14,7 @@ it("index behaves as expected", function () {
         ->times(3)
         ->create();
 
-    $response = $this->get(route("category.index"));
+    $response = actingAs()->get(route("api.category.index"));
 
     $response->assertOK();
     $response->assertJsonStructure([]);
@@ -27,11 +27,11 @@ it("index behaves as expected", function () {
 //         CategoryStoreRequest::class
 //     );
 
-it("saves on store", function () {
+it("saves category on store", function () {
     $user = User::factory()->create();
     $title = $this->faker->sentence(4);
 
-    $response = $this->post(route("category.store"), [
+    $response = actingAs()->post(route("api.category.store"), [
         "user_id" => $user->id,
         "title" => $title,
     ]);
@@ -52,7 +52,7 @@ it("category show behaves as expected", function () {
         ->has(Todo::factory()->count(5))
         ->create();
 
-    $response = $this->getJson(route("category.show", $category->slug));
+    $response = actingAs()->getJson(route("api.category.show", $category->slug));
 
     $response->assertOK();
     $response->assertJsonStructure([]);
@@ -73,12 +73,11 @@ it("uses form request validation on update")->assertActionUsesFormRequest(
     CategoryUpdateRequest::class
 );
 
-it("update behaves as expected", function () {
-    $category = Category::factory()->create();
-    $user = User::factory()->create();
+it("update category behaves as expected", function () {
+    [$user, $category] = userWithTodos();
     $title = $this->faker->sentence(4);
 
-    $response = $this->put(route("category.update", $category), [
+    $response = actingAs($user)->put(route("api.category.update", $category), [
         "user_id" => $user->id,
         "title" => $title,
     ]);
@@ -92,10 +91,10 @@ it("update behaves as expected", function () {
     expect($category->title)->toBe($title);
 });
 
-it("deletes and responds with on destroy", function () {
-    $category = Category::factory()->create();
+it("deletes category and responds with on destroy", function () {
+    [$user, $category] = userWithTodos();
 
-    $response = $this->delete(route("category.destroy", $category));
+    $response = actingAs()->delete(route("api.category.destroy", $category));
 
     $response->assertNoContent();
 

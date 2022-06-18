@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\TagController;
-use App\Http\Controllers\Api\TodoController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +20,30 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-Route::get("/home", [App\Http\Controllers\HomeController::class, "index"])
-    ->name("home")
-    ->middleware("auth");
+Route::middleware("auth")->group(function () {
+    Route::get("/home", [
+        App\Http\Controllers\HomeController::class,
+        "index",
+    ])->name("home");
 
-Route::resource("todo", TodoController::class);
-Route::resource("category", CategoryController::class);
-Route::resource("tag", TagController::class);
+    Route::resource("categories", CategoryController::class)->only('index');
+});
 
-Route::apiResource(
-    "/api/todos",
-    App\Http\Controllers\Api\TodoController::class
-)->middleware("auth");
+Route::prefix("api")
+    ->name('api.')
+    ->middleware("auth")
+    ->group(function () {
+        Route::apiResource(
+            "todos",
+            App\Http\Controllers\Api\TodoController::class
+        );
+
+        Route::apiResource(
+            "category",
+            App\Http\Controllers\Api\CategoryController::class
+        );
+        Route::apiResource(
+            "tag",
+            App\Http\Controllers\Api\TagController::class
+        );
+    });

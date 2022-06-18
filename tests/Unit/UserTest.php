@@ -37,3 +37,12 @@ test("user has todos", function () {
         ->toBeObject()
         ->toHaveCount(5);
 });
+
+test('user factory can create todos', function() {
+    [$user] = userWithTodos(null, 3);
+
+    expect($user)
+        ->name->toBe($user->name)
+        ->categories->toHaveCount(1)
+        ->todos->toHaveCount(3);
+});

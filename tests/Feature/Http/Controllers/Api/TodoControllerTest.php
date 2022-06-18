@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\TodoController;
 use App\Http\Requests\TodoStoreRequest;
@@ -14,14 +14,14 @@ it("index behaves as expected", function () {
         ->times(3)
         ->create();
 
-    $response = $this->get(route("todo.index"));
+    $response = actingAs()->get(route("api.todos.index"));
 
     $response->assertOK();
     $response->assertJsonStructure([]);
 });
 
 it("todo has errors if user not logged in", function () {
-    $res = $this->postJson(route("todos.store"), [])->assertStatus(401);
+    $res = $this->postJson(route("api.todos.store"), [])->assertStatus(401);
 });
 
 it("todo has errors if store data not supplied", function () {
@@ -29,7 +29,7 @@ it("todo has errors if store data not supplied", function () {
     $body = $this->faker->word;
 
     actingAs()
-        ->postJson(route("todos.store"), [])
+        ->postJson(route("api.todos.store"), [])
         ->assertStatus(422);
 });
 
@@ -41,7 +41,7 @@ it("only category owner can add todo to it", function () {
     $body = $this->faker->word;
 
     $response = actingAs()
-        ->postJson(route("todos.store"), [
+        ->postJson(route("api.todos.store"), [
             // 'user_id' => $user->id,
             "category_slug" => $category->slug,
             "body" => $body,
@@ -58,7 +58,7 @@ it("todo saves on store", function () {
     $tag = $this->faker->word;
 
     $response = actingAs($user)
-        ->postJson(route("todos.store"), [
+        ->postJson(route("api.todos.store"), [
             // 'user_id' => $user->id,
             "category_slug" => $category->slug,
             "body" => $body,
@@ -83,7 +83,7 @@ it("todo saves on store", function () {
 it("show behaves as expected", function () {
     $todo = Todo::factory()->create();
 
-    $response = $this->get(route("todo.show", $todo));
+    $response = actingAs()->get(route("api.todos.show", $todo));
 
     $response->assertOK();
     $response->assertJsonStructure([]);
@@ -91,7 +91,7 @@ it("show behaves as expected", function () {
 
 it("todo will not update for un logged in user", function () {
     $this->putJson(
-        route("todos.update", Todo::factory()->create()),
+        route("api.todos.update", Todo::factory()->create()),
         []
     )->assertStatus(401);
 });
@@ -104,7 +104,7 @@ it("only todo owner can update it", function () {
     $todo = $category->todos()->save(Todo::factory()->make());
 
     $response = actingAs()
-        ->putJson(route("todo.update", $todo), [
+        ->putJson(route("api.todos.update", $todo), [
             // 'user_id' => $user->id,
             "category_slug" => $category->slug,
             "body" => $this->faker->word,
@@ -123,7 +123,7 @@ it("update todo behaves as expected", function () {
     $done = $this->faker->boolean;
 
     $response = actingAs($user)
-        ->putJson(route("todo.update", $todo), [
+        ->putJson(route("api.todos.update", $todo), [
             // 'user_id' => $user->id,
             "category_slug" => $category->slug,
             "body" => $body,
@@ -139,12 +139,12 @@ it("update todo behaves as expected", function () {
         ->done->toBe($done);
 });
 
-it("deletes and responds with on destroy", function () {
-    $todo = Todo::factory()->create();
+it("deletes todo and responds with on destroy", function () {
+    [2 => $todos] = userWithTodos();
 
-    $response = $this->delete(route("todo.destroy", $todo));
+    $response = actingAs()->delete(route("api.todos.destroy", $todos->first()));
 
     $response->assertNoContent();
 
-    $this->assertModelMissing($todo);
+    $this->assertModelMissing($todos->first());
 });
