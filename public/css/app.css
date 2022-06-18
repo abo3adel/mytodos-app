@@ -10316,9 +10316,10 @@ html {
 
 body {
   font-family: var(--body-font);
-  background-image: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg");
   background-size: cover;
   background-position: center;
+  background: rgb(77, 3, 20);
+  background: linear-gradient(225deg, rgb(77, 3, 20) 0%, rgb(132, 42, 156) 40%, rgba(163, 55, 59, 0.9549683989) 77%, rgb(17, 32, 73) 91%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10367,6 +10368,15 @@ img {
   transition: 0.5s;
 }
 
+.dropdown-menu {
+  color: #dee2e6;
+  background-color: #343a40;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.dropdown-menu a {
+  color: #dee2e6;
+}
+
 .light-mode .dark-light svg {
   fill: transparent;
   stroke: var(--theme-color);
@@ -10388,6 +10398,11 @@ img {
 }
 .light-mode .left-side a.active, .light-mode .left-side a:hover {
   background-color: rgba(101, 126, 147, 0.3490196078) !important;
+}
+.light-mode .dropdown-menu {
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 body.light-mode:before,

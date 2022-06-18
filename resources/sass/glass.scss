@@ -46,9 +46,17 @@ html {
 
 body {
     font-family: var(--body-font);
-    background-image: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg");
+    // background-image: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg");
     background-size: cover;
     background-position: center;
+    background: rgb(77, 3, 20);
+    background: linear-gradient(
+        225deg,
+        rgba(77, 3, 20, 1) 0%,
+        rgba(132, 42, 156, 1) 40%,
+        rgba(163, 55, 59, 0.9549683988764045) 77%,
+        rgba(17, 32, 73, 1) 91%
+    );
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,6 +103,15 @@ img {
     }
 }
 
+.dropdown-menu {
+    color: #dee2e6;
+    background-color: #343a40;
+    border-color: rgba(0, 0, 0, 0.15);
+    a {
+        color: #dee2e6;
+    }
+}
+
 .light-mode {
     .dark-light svg {
         fill: transparent;
@@ -113,12 +130,18 @@ img {
         background-color: rgb(255 255 255 / 94%);
     }
     .todo-header {
-      color: #14162b !important; 
+        color: #14162b !important;
     }
     .left-side a {
-        &.active, &:hover {
+        &.active,
+        &:hover {
             background-color: #657e9359 !important;
         }
+    }
+    .dropdown-menu {
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
     }
 }
 
@@ -561,7 +584,7 @@ body.light-mode .video-bg:before {
                     border-radius: 0 0 13px 13px;
                 }
                 label:hover {
-                  cursor: pointer;
+                    cursor: pointer;
                 }
             }
             & + li {
@@ -806,7 +829,8 @@ body.light-mode .video-bg:before {
     padding: 20px;
     cursor: pointer;
     transition: 0.3s ease;
-    &:hover, &.active {
+    &:hover,
+    &.active {
         transform: scale(1.02);
         background-color: var(--theme-bg-color);
     }
