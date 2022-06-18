@@ -46,7 +46,7 @@
         {{-- <li class="nav-item dropdown"> --}}
         <a id="navbarDropdown" class="" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false" v-pre>
-            <img class="profile-img" src="http://images.test/users/2.jpg" alt="">
+            <img class="profile-img" src="{{auth()->user()->image}}" alt="">
         </a>
 
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

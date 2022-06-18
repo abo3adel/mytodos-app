@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -36,6 +37,16 @@ class User extends Authenticatable
     protected $casts = [
         "email_verified_at" => "datetime",
     ];
+
+    public function image(): Attribute
+    {
+        $hash = md5(strtolower(trim($this->email)));
+        return new Attribute(
+            get: fn() => "https://www.gravatar.com/avatar/" .
+                $hash .
+                "?d=wavatar"
+        );
+    }
 
     public function todos(): HasManyThrough
     {
