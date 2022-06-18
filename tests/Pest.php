@@ -23,13 +23,16 @@ function actingAs(Authenticatable $user = null, string $driver = null)
     return test()->actingAs($user, $driver);
 }
 
-function userWithTodos(?User $user = null, int $todos_count = 1): array
+function userWithTodos(?User $user = null, int $todos_count = 1, int $categories_count = 1): array
 {
     $user = $user ?? User::factory()->create();
-    $cat = $user->categories()->save(Category::factory()->make());
+    $cats = Category::factory()->count($categories_count)->for($user)->create();
+    // $cat = $user->categories()->save(Category::factory()->make());
     $todos = Todo::factory()->count($todos_count)->create([
-        'category_id' => $cat->id,
+        'category_id' => $cats->first()->id,
     ]);
+
+    $cat = $categories_count === 1 ? $cats->first() : $cats;
 
     return [$user, $cat, $todos];
 }
