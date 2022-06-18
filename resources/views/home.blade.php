@@ -33,13 +33,13 @@
             @include('home.categories-list')
         </div>
         <div class="col-12 col-md-9"
-            x-init="loadTodos('{{ $categories->first()->slug }}');activeCategory = '{{ $categories->first()->slug }}'">
+            x-init="loadTodos('{{ session()->has('slug') ? session()->get('slug') : $categories->first()->slug }}');activeCategory = '{{ session()->has('slug') ? session()->get('slug') : $categories->first()->slug }}'">
 
             <div>
                 @include('home.todo-card')
             </div>
         </div>
         @include('home.left-offcanvas')
-    </div>    
+    </div>
     <x-toast />
     @endsection
