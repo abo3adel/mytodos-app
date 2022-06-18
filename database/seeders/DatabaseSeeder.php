@@ -20,38 +20,43 @@ class DatabaseSeeder extends Seeder
     {
         DB::beginTransaction();
 
-        \App\Models\User::factory(10)->create();
+        $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(TodosTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
 
-        $user = \App\Models\User::factory()
-            ->has(Category::factory()->count(5))
-            ->create([
-                "name" => "Ahmed Adel",
-                "email" => "user@mytodos.com",
-            ]);
+        // \App\Models\User::factory(10)->create();
 
-        Category::each(function (Category $category) {
-            $category->todos()->saveMany(
-                $todos = Todo::factory()
-                    ->count(random_int(5, 10))
-                    ->make()
-            );
-        });
+        // $user = \App\Models\User::factory()
+        //     ->has(Category::factory()->count(5))
+        //     ->create([
+        //         "name" => "Ahmed Adel",
+        //         "email" => "user@mytodos.com",
+        //     ]);
 
-        // create 3 tags by admin
-        Tag::factory()->count(3)->sequence(
-            ['title' => 'urgent'],
-            ['title' => 'easy'],
-            ['title' => 'needs help'],
-        )->create();
+        // Category::each(function (Category $category) {
+        //     $category->todos()->saveMany(
+        //         $todos = Todo::factory()
+        //             ->count(random_int(5, 10))
+        //             ->make()
+        //     );
+        // });
 
-        Todo::each(function (Todo $todo) {
-            if ($todo->id % 2 === 0) {
-                $todo->tags()->save(
-                    Tag::factory()
-                        ->make()
-                );
-            }
-        });
+        // // create 3 tags by admin
+        // Tag::factory()
+        //     ->count(3)
+        //     ->sequence(
+        //         ["title" => "urgent"],
+        //         ["title" => "easy"],
+        //         ["title" => "needs help"]
+        //     )
+        //     ->create();
+
+        // Todo::each(function (Todo $todo) {
+        //     if ($todo->id % 2 === 0) {
+        //         $todo->tags()->save(Tag::factory()->make());
+        //     }
+        // });
 
         DB::commit();
     }
