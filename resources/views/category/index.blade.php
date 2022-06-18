@@ -65,7 +65,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger">
-                                <span x-show="deleting !== '{{ $cat->slug }}'">
+                                <span x-show="deleting !== '{{ $cat->slug }}'" class="fs-3">
                                     @include('icons.trash_bin')
                                 </span>
                                 <div class="spinner-border text-light mx-1 spinner-border-sm" role="status"
