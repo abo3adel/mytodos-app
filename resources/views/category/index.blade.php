@@ -41,7 +41,9 @@
         </div>
         <div class="content-section row flex-row" style="margin-left: 0">
             @foreach($categories as $cat)
-                <div class="app-card col-6 col-md-4 my-3 mx-1">
+                <div class="app-card col-6 col-md-4 my-3 mx-1" x-bind:class="{
+                    'active': editMode === '{{ $cat->slug }}'
+                }">
                     <span>
                         @include('icons.bookmark-heart')
                         {{ $cat->title }}
@@ -53,7 +55,8 @@
                         </div>
                     </div>
                     <div class="app-card-buttons">
-                        <button class="btn btn-outline-info mx-1" x-on:click.prevent="enableEdit('{{$cat->title}}', '{{ $cat->slug }}')">
+                        <button class="btn btn-outline-info mx-1"
+                            x-on:click.prevent="enableEdit('{{ $cat->title }}', '{{ $cat->slug }}')">
                             @include('icons.pencil')
                         </button>
                         <button class="btn btn-outline-danger">

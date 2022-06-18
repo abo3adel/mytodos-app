@@ -11031,7 +11031,7 @@ body.light-mode .video-bg:before {
   cursor: pointer;
   transition: 0.3s ease;
 }
-.app-card:hover {
+.app-card:hover, .app-card.active {
   transform: scale(1.02);
   background-color: var(--theme-bg-color);
 }

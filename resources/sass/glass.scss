@@ -806,7 +806,7 @@ body.light-mode .video-bg:before {
     padding: 20px;
     cursor: pointer;
     transition: 0.3s ease;
-    &:hover {
+    &:hover, &.active {
         transform: scale(1.02);
         background-color: var(--theme-bg-color);
     }
