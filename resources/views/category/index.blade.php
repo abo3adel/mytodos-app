@@ -55,7 +55,7 @@
                             {{ $cat->todos_count }}
                         </div>
                     </div>
-                    <div class="app-card-buttons">
+                    <div class="app-card-buttons" style="align-items: self-start;">
                         <button class="btn btn-outline-info mx-1"
                             x-on:click.prevent="enableEdit('{{ $cat->title }}', '{{ $cat->slug }}')">
                             @include('icons.pencil')
@@ -65,7 +65,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger">
-                                <span x-show="deleting !== '{{ $cat->slug }}'" class="fs-3">
+                                <span x-show="deleting !== '{{ $cat->slug }}'" class="">
                                     @include('icons.trash_bin')
                                 </span>
                                 <div class="spinner-border text-light mx-1 spinner-border-sm" role="status"
