@@ -55,6 +55,7 @@
         </div>
         <div class="overlay-app"></div>
     </div>
+    @include('footer')
 </body>
 
 </html>
