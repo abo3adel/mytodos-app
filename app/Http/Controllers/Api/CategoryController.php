@@ -85,8 +85,12 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request, Category $category)
     {
+        abort_unless(Auth::id() === $category->user_id, 401);
+
         $category->delete();
 
-        return response()->noContent();
+        session()->flash('success', $category->title);
+
+        return back();
     }
 }

@@ -36,7 +36,7 @@ it("will not save category while not logged in")
     ->assertStatus(401);
 
 it("will not save categoy with invalid data", function () {})
-    ->actingAs()
+    ->actingAs(User::factory()->create())
     ->postJson("/api/category/", [
         "title" => "",
     ])
@@ -110,12 +110,23 @@ it("update category behaves as expected", function () {
     expect($category->title)->toBe($title);
 });
 
+test("only category owner can delete it", function () {
+    [$user, $category] = userWithTodos();
+
+    actingAs()
+        ->delete(route("api.category.destroy", $category))
+        ->assertUnAuthorized();
+
+    $this->assertModelExists($category);
+});
+
 it("deletes category and responds with on destroy", function () {
     [$user, $category] = userWithTodos();
 
-    $response = actingAs()->delete(route("api.category.destroy", $category));
-
-    $response->assertNoContent();
+    actingAs($user)
+        ->delete(route("api.category.destroy", $category))
+        ->assertStatus(302)
+        ->assertSessionHas('success');
 
     $this->assertModelMissing($category);
 });

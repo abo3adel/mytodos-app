@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 

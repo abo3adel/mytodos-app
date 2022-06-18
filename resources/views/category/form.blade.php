@@ -9,7 +9,7 @@
                     <div class="col-sm-2 text-center">
                         <button type="submit" class="btn btn-primary mx-2" x-bind:disabled="!title.length || savingCat">
                             <template x-if="savingCat">
-                                <div class="spinner-border text-light mx-1" role="status"
+                                <div class="spinner-border text-light mx-1 spinner-border-sm" role="status"
                                     style="width: 1.5rem;height: 1.5rem">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>

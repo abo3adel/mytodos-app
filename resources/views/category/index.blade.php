@@ -4,6 +4,7 @@
 <div class="main-container" style="" x-data="{
     editMode: '',
     savingCat: false,
+    deleting: '',
     title: '',   
     route: '{{ route('api.category.store') }}',
     action: '{{ route('api.category.store') }}',
@@ -59,9 +60,20 @@
                             x-on:click.prevent="enableEdit('{{ $cat->title }}', '{{ $cat->slug }}')">
                             @include('icons.pencil')
                         </button>
-                        <button class="btn btn-outline-danger">
-                            @include('icons.trash_bin')
-                        </button>
+                        <form method="POST" action="{{ route('api.category.destroy', $cat) }}"
+                            x-on:submit="deleting = '{{ $cat->slug }}'">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger">
+                                <span x-show="deleting !== '{{ $cat->slug }}'">
+                                    @include('icons.trash_bin')
+                                </span>
+                                <div class="spinner-border text-light mx-1 spinner-border-sm" role="status"
+                                    style="width: 1.5rem;height: 1.5rem" x-show="deleting === '{{ $cat->slug }}'">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endforeach
