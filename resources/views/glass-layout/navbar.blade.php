@@ -5,24 +5,27 @@
             @include('icons.view-list')
         </a>
     @endif
-    <a class="menu-link" href="/">
+    <a class="menu-link @if(Route::currentRouteName() === 'home')is-active @endif"
+        href="{{ route('home') }}">
         @include('icons.house-door')
         <span class="d-none d-md-inline">
             Home
         </span>
     </a>
-    <a class="menu-link" href="{{ route('categories.index') }}">
+    <a class="menu-link @if(Route::currentRouteName() === 'categories.index')is-active @endif"
+        href="{{ route('categories.index') }}">
         @include('icons.card-list')
         <span class="d-none d-md-inline">
             Categories
         </span>
     </a>
-    <a class="menu-link" href="#">
-        @include('icons.tags')
+    {{-- TODO add this if it was useful --}}
+    {{-- <a class="menu-link" href="#">
+@include('icons.tags')
         <span class="d-none d-md-inline">
             Tags
         </span>
-    </a>
+    </a> --}}
 </div>
 <div class="header-profile">
     <!-- Authentication Links -->
