@@ -66,6 +66,9 @@
                                 x-bind:disabled="updating == t.id"
                                 x-on:click.prevent="complete(t.id, t.body, t.done)" />
                             <label :for="t.id" class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded cursor-pointer"
+                            :class="{
+                                'text-decoration-line-through': tab === 'all' && t.done
+                            }"
                                 x-text="t.body" x-on:click.prevent="complete(t.id, t.body, t.done)"></label>
                             {{-- badges --}}
                             <div class="d-flex justify-content-center align-content-center">
