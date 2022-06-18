@@ -1,6 +1,6 @@
 <div class="menu-circle"></div>
 <div class="header-menu">
-    <a class="menu-link d-md-none" href="#">
+    <a class="menu-link d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         @include('icons.view-list')
     </a>
     <a class="menu-link is-active" href="#">Apps</a>

@@ -10386,6 +10386,9 @@ img {
 .light-mode .todo-header {
   color: #14162b !important;
 }
+.light-mode .left-side a.active, .light-mode .left-side a:hover {
+  background-color: rgba(101, 126, 147, 0.3490196078) !important;
+}
 
 body.light-mode:before,
 body.light-mode .video-bg:before {

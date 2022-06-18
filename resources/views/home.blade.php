@@ -39,6 +39,7 @@
                 @include('home.todo-card')
             </div>
         </div>
-    </div>
+        @include('home.left-offcanvas')
+    </div>    
     <x-toast />
     @endsection

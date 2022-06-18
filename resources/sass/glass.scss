@@ -115,6 +115,11 @@ img {
     .todo-header {
       color: #14162b !important; 
     }
+    .left-side a {
+        &.active, &:hover {
+            background-color: #657e9359 !important;
+        }
+    }
 }
 
 body.light-mode:before,
