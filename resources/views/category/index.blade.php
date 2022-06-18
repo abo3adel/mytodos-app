@@ -16,7 +16,7 @@
     </div>
     <div class="content-wrapper p-2">
         <div class="content-wrapper-header">
-            @include('home.todo.form')
+            @include('category.form')
         </div>
         <div class="content-section row flex-row" style="margin-left: 0">
             @foreach($categories as $cat)

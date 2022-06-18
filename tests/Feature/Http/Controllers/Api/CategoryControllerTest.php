@@ -8,6 +8,10 @@ use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Todo;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Str;
+
+use function Pest\Laravel\withoutExceptionHandling;
 
 it("index behaves as expected", function () {
     $categories = Category::factory()
@@ -27,24 +31,32 @@ it("index behaves as expected", function () {
 //         CategoryStoreRequest::class
 //     );
 
+it("will not save category while not logged in")
+    ->postJson("/api/category/", [])
+    ->assertStatus(401);
+
+it("will not save categoy with invalid data", function () {})
+    ->actingAs()
+    ->postJson("/api/category/", [
+        "title" => "",
+    ])
+    ->assertStatus(422);
+
 it("saves category on store", function () {
     $user = User::factory()->create();
     $title = $this->faker->sentence(4);
 
-    $response = actingAs()->post(route("api.category.store"), [
-        "user_id" => $user->id,
-        "title" => $title,
-    ]);
+    $response = actingAs($user)
+        ->post(route("api.category.store"), [
+            "title" => $title,
+        ])
+        ->assertRedirect(route("home"))
+        ->assertSessionHas("slug");
 
-    $categories = Category::query()
-        ->where("user_id", $user->id)
+    $categories = Category::where("user_id", $user->id)
         ->where("title", $title)
         ->get();
     expect($categories)->toHaveCount(1);
-    $category = $categories->first();
-
-    $response->assertCreated();
-    $response->assertJsonStructure([]);
 });
 
 it("category show behaves as expected", function () {
@@ -52,7 +64,9 @@ it("category show behaves as expected", function () {
         ->has(Todo::factory()->count(5))
         ->create();
 
-    $response = actingAs()->getJson(route("api.category.show", $category->slug));
+    $response = actingAs()->getJson(
+        route("api.category.show", $category->slug)
+    );
 
     $response->assertOK();
     $response->assertJsonStructure([]);
@@ -64,28 +78,33 @@ it("category show behaves as expected", function () {
         ->data->slug->toBe($category->slug)
         ->data->todos->toBeArray()
         ->data->todos->data->toHaveCount(5);
-        // ->dd();
+    // ->dd();
 });
 
-it("uses form request validation on update")->assertActionUsesFormRequest(
-    CategoryController::class,
-    "update",
-    CategoryUpdateRequest::class
-);
+it("only category owner can update it", function () {
+    [$user, $category] = userWithTodos();
+    $title = $this->faker->sentence(4);
+
+    $response = actingAs()
+        ->put(route("api.category.update", $category), [
+            "title" => $title,
+        ])
+        ->assertUnAuthorized();
+});
 
 it("update category behaves as expected", function () {
     [$user, $category] = userWithTodos();
     $title = $this->faker->sentence(4);
 
-    $response = actingAs($user)->put(route("api.category.update", $category), [
-        "user_id" => $user->id,
-        "title" => $title,
-    ]);
+    $response = actingAs($user)
+        ->put(route("api.category.update", $category), [
+            "user_id" => $user->id,
+            "title" => $title,
+        ])
+        ->assertRedirect(route("home"))
+        ->assertSessionHas("slug");
 
     $category->refresh();
-
-    $response->assertOK();
-    $response->assertJsonStructure([]);
 
     expect($category->user_id)->toBe($user->id);
     expect($category->title)->toBe($title);

@@ -48,6 +48,7 @@
                             </div>
                         </template>
                         <template x-if='!saving'>
+                            @include('icon.plus-lg')
                             <span>Add</span>
                         </template>
                     </button>

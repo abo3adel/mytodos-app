@@ -9,10 +9,16 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Auth;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
+    const VALIDATION_RULES = [
+        "title" => ["required", "min:2", "string", "max:100"],
+    ];
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \App\Http\Resources\CategoryCollection
@@ -28,11 +34,18 @@ class CategoryController extends Controller
      * @param \App\Http\Requests\CategoryControllerStoreRequest $request
      * @return \App\Http\Resources\CategoryResource
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(Request $request)
     {
-        $category = Category::create($request->validated());
+        $req = $request->validate(self::VALIDATION_RULES);
 
-        return new CategoryResource($category);
+        $category = Category::create([
+            "user_id" => Auth::id(),
+            "title" => $req["title"],
+        ]);
+
+        return redirect()
+            ->route("home")
+            ->with("slug", $category->slug);
     }
 
     /**
@@ -42,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Request $request, Category $category)
     {
-        $category->loadMissing('todos.tags');
+        $category->loadMissing("todos.tags");
 
         return new CategoryResource($category);
     }
@@ -52,11 +65,17 @@ class CategoryController extends Controller
      * @param \App\Models\Category $category
      * @return \App\Http\Resources\CategoryResource
      */
-    public function update(CategoryUpdateRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
-        $category->update($request->validated());
+        $req = $request->validate(self::VALIDATION_RULES);
 
-        return new CategoryResource($category);
+        abort_unless(Auth::id() === $category->user_id, 401);
+
+        $updated = $category->update($req);
+
+        return redirect()
+            ->route("home")
+            ->with("slug", $category->slug);
     }
 
     /**
