@@ -8,8 +8,13 @@
     </div>
 
     <div class="col-md-5 mb-0 text-center">
-        Copyright <a href="https://abo3adel.github.io/" target='_blank' class="fs-6 text-success"
-            style="font-variant: small-caps">Ahmed Adel</a>&copy; 2022
+        <p class="mb-0">
+            theme highly inpired from a <a href='https://codepen.io/TurkAysenur/pen/ZEpxeYm' target="_blank"
+                class='text-success'>pen</a> by <a href='https://codepen.io/TurkAysenur' target="_blank"
+                class="text-success">Aysenur Turk</a>
+        </p>
+        made with <span class="text-danger">&hearts;</span> by <a href="https://abo3adel.github.io/" target='_blank'
+            class="fs-6 text-success" style="font-variant: small-caps">Ahmed Adel</a>&copy; 2022
         {{ date('Y') > 2022 ? '- ' . date('Y') : '' }}.
         <br />
         <span class='inline-block'>All rights reserved</span>
