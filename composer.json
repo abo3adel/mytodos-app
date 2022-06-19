@@ -9,7 +9,6 @@
         "barryvdh/laravel-ide-helper": "^2.12",
         "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/fortify": "^1.13",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/socialite": "^5.5",
