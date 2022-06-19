@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 require("laravel-mix-swc");
+require('laravel-mix-purgecss');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,18 +13,8 @@ require("laravel-mix-swc");
  |
  */
 
-mix.swc('resources/js/app.ts', 'public/js', {
-    test: ".*.ts$",
-    jsc: {
-        parser: {
-            syntax: "typescript",
-            jsx: false,
-            decorators: true,
-            dynamicImport: true,
-            exportDefaultFrom: true,
-        }
-    }
-})
+mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps()
+    .purgeCss()
+    // .sourceMaps()
     .version();

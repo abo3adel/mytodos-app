@@ -32,8 +32,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '802850905094-ensug3lvi7c8g02gccsm8k51auitsvlo.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://mytodos50.herokuapp.com/login/google/callback',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT'),
     ],
 ];
