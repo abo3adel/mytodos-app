@@ -7,7 +7,7 @@ use Auth;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Laravel\Socialite\Facades\Socialite;
+use Socialite;
 
 class GoogleLoginController extends Controller
 {
