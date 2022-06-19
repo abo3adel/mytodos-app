@@ -49,14 +49,6 @@ class User extends Authenticatable
         );
     }
 
-    public function password(): Attribute
-    {
-        return new Attribute(
-            get: fn() => $this->password,
-            set: fn($pass) => ($this->password = bcrypt($pass))
-        );
-    }
-
     public function todos(): HasManyThrough
     {
         return $this->hasManyThrough(Todo::class, Category::class);
