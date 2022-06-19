@@ -38,16 +38,17 @@ Route::prefix("api")
         Route::apiResource(
             "todos",
             App\Http\Controllers\Api\TodoController::class
-        );
+        )->except('index');
 
         Route::apiResource(
             "category",
             App\Http\Controllers\Api\CategoryController::class
-        );
-        Route::apiResource(
-            "tag",
-            App\Http\Controllers\Api\TagController::class
-        );
+        )->except('index');
+        
+        // Route::apiResource(
+        //     "tag",
+        //     App\Http\Controllers\Api\TagController::class
+        // );
     });
 
 Route::get("/login/google", [GoogleLoginController::class, "redirect"])->name(

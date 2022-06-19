@@ -23,17 +23,6 @@ class TodoController extends Controller
     ];
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \App\Http\Resources\TodoCollection
-     */
-    public function index(Request $request)
-    {
-        $todos = Todo::all();
-
-        return new TodoCollection($todos);
-    }
-
-    /**
      * @param \App\Http\Requests\TodoStoreRequest $request
      * @return \App\Http\Resources\TodoResource
      */

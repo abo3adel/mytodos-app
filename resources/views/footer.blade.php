@@ -1,12 +1,11 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top w-100" style="color: var(--theme-color);background: var(--theme-bg-color);">
-    <p class="col-md-3 mb-0 text-muted">
-        <div class='text-center'>
-            project repo @ <a href="https://github.com/abo3adel/mytodos-app/tree/master" target="_blank">
-                @include('icons.github')
-                github
-            </a>
-        </div>
-    </p>
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top w-100"
+    style="color: var(--theme-color);background: var(--theme-bg-color);">
+    <div class="col-md-3 mb-0 text-muted">
+        project repo @ <a href="https://github.com/abo3adel/mytodos-app/tree/master" target="_blank">
+            @include('icons.github')
+            github
+        </a>
+    </div>
 
     <div class="col-md-5 mb-0 text-center">
         Copyright <a href="https://abo3adel.github.io/" target='_blank' class="fs-6 text-success"

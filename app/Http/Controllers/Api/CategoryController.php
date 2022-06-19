@@ -20,17 +20,6 @@ class CategoryController extends Controller
     ];
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \App\Http\Resources\CategoryCollection
-     */
-    public function index(Request $request)
-    {
-        $categories = Category::all();
-
-        return new CategoryCollection($categories);
-    }
-
-    /**
      * @param \App\Http\Requests\CategoryControllerStoreRequest $request
      * @return \App\Http\Resources\CategoryResource
      */
