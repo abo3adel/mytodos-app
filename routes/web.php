@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GoogleLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // register auth routes manually
-require_once 'auth.php';
+require_once "auth.php";
 
 Route::get("/", function () {
     return view("welcome");
@@ -27,11 +28,11 @@ Route::middleware("auth")->group(function () {
         "index",
     ])->name("home");
 
-    Route::resource("categories", CategoryController::class)->only('index');
+    Route::resource("categories", CategoryController::class)->only("index");
 });
 
 Route::prefix("api")
-    ->name('api.')
+    ->name("api.")
     ->middleware("auth")
     ->group(function () {
         Route::apiResource(
@@ -48,3 +49,11 @@ Route::prefix("api")
             App\Http\Controllers\Api\TagController::class
         );
     });
+
+Route::get("/login/google", [GoogleLoginController::class, "redirect"])->name(
+    "login.google-redirect"
+);
+Route::get("/login/google/callback", [
+    GoogleLoginController::class,
+    "callback",
+])->name("login.google-callback");

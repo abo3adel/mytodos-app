@@ -38,11 +38,27 @@ test("user has todos", function () {
         ->toHaveCount(5);
 });
 
-test('user factory can create todos', function() {
+test("user factory can create todos", function () {
     [$user] = userWithTodos(null, 3);
 
     expect($user)
         ->name->toBe($user->name)
         ->categories->toHaveCount(1)
         ->todos->toHaveCount(3);
+});
+
+test("saving new user will encrypt password", function () {
+    $pass = '$this->faker->word';
+    $user = User::create(
+        User::factory()->make([
+            "password" => $pass,
+        ])
+    );
+
+    $user->refresh();
+
+    expect($user->pass)
+        ->not()
+        ->toBe($pass)
+        ->toBe(bcrypt($pass));
 });

@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
+Route::group(['middleware' => ['guest']], function() {
+
 // login
 Route::get("login", [LoginController::class, "showLoginForm"])->name("login");
 Route::post("login", [LoginController::class, "login"]);
@@ -21,6 +23,7 @@ Route::get("register", [
     "showRegistrationForm",
 ])->name("register");
 Route::post("register", [RegisterController::class, "register"]);
+});
 
 // reset password
 Route::get("password/reset", [

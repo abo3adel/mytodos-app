@@ -20,7 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name", "email", "password"];
+    protected $fillable = ["name", "email", "password", "google_id", "avatar"];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -35,6 +35,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        "id" => "integer",
+        "google_id" => "integer",
         "email_verified_at" => "datetime",
     ];
 
@@ -42,9 +44,16 @@ class User extends Authenticatable
     {
         $hash = md5(strtolower(trim($this->email)));
         return new Attribute(
-            get: fn() => "https://www.gravatar.com/avatar/" .
-                $hash .
-                "?d=wavatar"
+            get: fn() => $this->avatar ??
+                "https://www.gravatar.com/avatar/" . $hash . "?d=wavatar"
+        );
+    }
+
+    public function password(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->password,
+            set: fn($pass) => ($this->password = bcrypt($pass))
         );
     }
 
