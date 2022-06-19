@@ -15,8 +15,6 @@ Route::group(['middleware' => ['guest']], function() {
 Route::get("login", [LoginController::class, "showLoginForm"])->name("login");
 Route::post("login", [LoginController::class, "login"]);
 
-Route::post("logout", [LoginController::class, "logout"])->name("logout");
-
 // register
 Route::get("register", [
     RegisterController::class,
@@ -24,6 +22,10 @@ Route::get("register", [
 ])->name("register");
 Route::post("register", [RegisterController::class, "register"]);
 });
+
+
+// not guest now
+Route::post("logout", [LoginController::class, "logout"])->name("logout");
 
 // reset password
 Route::get("password/reset", [
