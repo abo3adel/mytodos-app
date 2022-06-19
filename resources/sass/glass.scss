@@ -46,10 +46,7 @@ html {
 
 body {
     font-family: var(--body-font);
-    // background-image: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg");
-    background-size: cover;
-    background-position: center;
-    background: rgb(77, 3, 20);
+    background-color: rgb(77, 3, 20);
     background: linear-gradient(
         225deg,
         rgba(77, 3, 20, 1) 0%,
@@ -57,6 +54,9 @@ body {
         rgba(163, 55, 59, 0.9549683988764045) 77%,
         rgba(17, 32, 73, 1) 91%
     );
+    background: url("/img/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg") cover center;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;

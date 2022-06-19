@@ -41,5 +41,5 @@
         </div>
         @include('home.left-offcanvas')
     </div>
-    <x-toast />
-    @endsection
+</div>
+@endsection

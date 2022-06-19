@@ -12,11 +12,10 @@
     <title>MyTodos</title>
 
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
-
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
@@ -55,7 +54,11 @@
         </div>
         <div class="overlay-app"></div>
     </div>
+    <x-toast />
     @include('footer')
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 
 </html>
