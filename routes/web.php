@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth::routes();
+// register auth routes manually
+require_once 'auth.php';
 
 Route::get("/", function () {
     return view("welcome");
