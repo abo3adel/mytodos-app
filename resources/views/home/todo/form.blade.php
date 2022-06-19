@@ -5,7 +5,7 @@
     tag: null,
     user_tag: '',
     save: async function() {
-        if (this.saving || !this.body.length) return;
+        if (this.saving || !this.body.length || !this.activeCategory.length) return;
         this.saving = true;
         this.error = '';
 

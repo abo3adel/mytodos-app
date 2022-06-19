@@ -41,11 +41,16 @@
         <div>
             <template x-if="todos.length < 1 || !todosLength">
                 <div class="text-center text-white">
-                    <h1 style="font-size: calc(5rem + 1.2vw);">
+                    <h1 style="font-size: calc(6rem + 1.2vw);">
                         @include('icons.view-list')
                     </h1>
                     <h5 class="">
-                        start adding new todos
+                        <span x-show="!activeCategory.length">
+                            start by adding a new <a href="{{route('categories.index')}}" class="badge bg-secondary fs-4">category</a>
+                        </span>
+                        <span x-show="activeCategory.length">
+                            continue by adding more todos
+                        </span>
                     </h5>
                 </div>
             </template>
