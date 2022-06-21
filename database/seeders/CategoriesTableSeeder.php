@@ -21,7 +21,6 @@ class CategoriesTableSeeder extends Seeder
         \DB::table('categories')->insert(array (
             0 => 
             array (
-                'id' => 1,
                 'user_id' => 11,
                 'title' => 'Non laboriosam.',
                 'slug' => 'iusto-qui-porro-tempore',
@@ -30,7 +29,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             1 => 
             array (
-                'id' => 2,
                 'user_id' => 11,
                 'title' => 'Exercitationem iste.',
                 'slug' => 'culpa-quos-dolore-distinctio-facere-reprehenderit',
@@ -39,7 +37,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'id' => 3,
                 'user_id' => 11,
                 'title' => 'Et aut consequatur.',
                 'slug' => 'nisi-maxime-deserunt-tempora-sapiente-amet-molestiae-eaque-dolorem',
@@ -48,7 +45,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             3 => 
             array (
-                'id' => 4,
                 'user_id' => 11,
                 'title' => 'Sapiente dignissimos.',
                 'slug' => 'sequi-expedita-vitae-corporis-illo-laborum-laudantium-ex-voluptatem',
@@ -57,7 +53,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             4 => 
             array (
-                'id' => 5,
                 'user_id' => 11,
                 'title' => 'Nemo ut consectetur.',
                 'slug' => 'ut-incidunt-facilis-ipsum-sint-corporis',
@@ -66,7 +61,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             5 => 
             array (
-                'id' => 6,
                 'user_id' => 12,
                 'title' => 'Voluptatibus molestias.',
                 'slug' => 'voluptas-ut-incidunt-necessitatibus-at',
@@ -75,7 +69,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             6 => 
             array (
-                'id' => 7,
                 'user_id' => 13,
                 'title' => 'Eos dolores.',
                 'slug' => 'in-aut-dolores-itaque-repudiandae',
@@ -84,7 +77,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             7 => 
             array (
-                'id' => 8,
                 'user_id' => 14,
                 'title' => 'Assumenda esse.',
                 'slug' => 'minima-facere-dignissimos-dolor-et',
@@ -93,7 +85,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             8 => 
             array (
-                'id' => 9,
                 'user_id' => 15,
                 'title' => 'Pariatur ex.',
                 'slug' => 'exercitationem-vitae-necessitatibus-aut-sed-tempora-sit-vel',
@@ -102,7 +93,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             9 => 
             array (
-                'id' => 10,
                 'user_id' => 16,
                 'title' => 'Voluptatum quis.',
                 'slug' => 'vero-provident-et-tempora-quis',
@@ -111,7 +101,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             10 => 
             array (
-                'id' => 11,
                 'user_id' => 17,
                 'title' => 'Laborum eos tempore.',
                 'slug' => 'dolor-quaerat-beatae-quasi-ut',
@@ -120,7 +109,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             11 => 
             array (
-                'id' => 12,
                 'user_id' => 18,
                 'title' => 'Atque et non.',
                 'slug' => 'deleniti-non-quis-necessitatibus-sit-perspiciatis-aut-dicta',
@@ -129,7 +117,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             12 => 
             array (
-                'id' => 13,
                 'user_id' => 19,
                 'title' => 'Dignissimos neque porro.',
                 'slug' => 'fugiat-neque-itaque-saepe-quidem-placeat',
@@ -138,7 +125,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             13 => 
             array (
-                'id' => 14,
                 'user_id' => 20,
                 'title' => 'Neque expedita sunt.',
                 'slug' => 'commodi-magni-sequi-soluta-aut-aut-dolor',
@@ -147,7 +133,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             14 => 
             array (
-                'id' => 15,
                 'user_id' => 21,
                 'title' => 'Perspiciatis voluptas ut.',
                 'slug' => 'praesentium-fuga-earum-impedit-quidem',
@@ -156,7 +141,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             15 => 
             array (
-                'id' => 16,
                 'user_id' => 22,
                 'title' => 'Rerum qui.',
                 'slug' => 'sint-qui-quos-voluptas-nostrum-accusantium-et-omnis-alias',
@@ -165,7 +149,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             16 => 
             array (
-                'id' => 17,
                 'user_id' => 23,
                 'title' => 'Repudiandae cum.',
                 'slug' => 'in-fugiat-sapiente-nemo-voluptatem-incidunt',
@@ -174,7 +157,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             17 => 
             array (
-                'id' => 18,
                 'user_id' => 24,
                 'title' => 'Qui nisi soluta.',
                 'slug' => 'occaecati-odit-odit-beatae-quasi-dolor-voluptatem-non',
@@ -183,7 +165,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             18 => 
             array (
-                'id' => 19,
                 'user_id' => 25,
                 'title' => 'Et et est.',
                 'slug' => 'modi-in-autem-sunt',
@@ -192,7 +173,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             19 => 
             array (
-                'id' => 20,
                 'user_id' => 26,
                 'title' => 'Facere cupiditate.',
                 'slug' => 'consequatur-est-molestiae-aut-est-saepe-facere-deserunt',
@@ -201,7 +181,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             20 => 
             array (
-                'id' => 21,
                 'user_id' => 27,
                 'title' => 'Voluptate et.',
                 'slug' => 'maiores-quibusdam-inventore-perferendis-sed-facere-aliquam-ea',
@@ -210,7 +189,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             21 => 
             array (
-                'id' => 22,
                 'user_id' => 28,
                 'title' => 'Non officia accusamus.',
                 'slug' => 'quibusdam-eum-molestiae-nihil-fugit-et-aperiam-consequatur',
@@ -219,7 +197,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             22 => 
             array (
-                'id' => 23,
                 'user_id' => 29,
                 'title' => 'Qui in non.',
                 'slug' => 'ut-quam-rerum-est-cupiditate-eos-perferendis-veniam-veritatis',
@@ -228,7 +205,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             23 => 
             array (
-                'id' => 24,
                 'user_id' => 30,
                 'title' => 'Vel et totam.',
                 'slug' => 'provident-voluptas-dolores-labore-molestiae-eveniet',
@@ -237,7 +213,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             24 => 
             array (
-                'id' => 25,
                 'user_id' => 31,
                 'title' => 'Dolorum architecto.',
                 'slug' => 'ex-deserunt-praesentium-ut',
@@ -246,7 +221,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             25 => 
             array (
-                'id' => 26,
                 'user_id' => 32,
                 'title' => 'Repellendus expedita.',
                 'slug' => 'sit-inventore-cum-autem-ut-autem',
@@ -255,7 +229,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             26 => 
             array (
-                'id' => 27,
                 'user_id' => 33,
                 'title' => 'Aut accusamus quibusdam.',
                 'slug' => 'odit-qui-exercitationem-vitae-vel-sed-recusandae',
@@ -264,7 +237,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             27 => 
             array (
-                'id' => 28,
                 'user_id' => 34,
                 'title' => 'Magnam quas.',
                 'slug' => 'et-odio-sed-ad-voluptatum-aut-rerum-dicta',
@@ -273,7 +245,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             28 => 
             array (
-                'id' => 29,
                 'user_id' => 35,
                 'title' => 'Autem tempore voluptatibus.',
                 'slug' => 'dignissimos-ab-qui-veritatis-numquam-iste',
@@ -282,7 +253,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             29 => 
             array (
-                'id' => 30,
                 'user_id' => 36,
                 'title' => 'Expedita et distinctio.',
                 'slug' => 'eius-aut-tenetur-et-et-et',
@@ -291,7 +261,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             30 => 
             array (
-                'id' => 31,
                 'user_id' => 37,
                 'title' => 'Aut velit.',
                 'slug' => 'molestias-est-accusamus-a-qui-perspiciatis-ducimus',
@@ -300,7 +269,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             31 => 
             array (
-                'id' => 32,
                 'user_id' => 38,
                 'title' => 'Qui est vel.',
                 'slug' => 'quia-in-consectetur-perspiciatis-soluta-dolores',
@@ -309,7 +277,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             32 => 
             array (
-                'id' => 33,
                 'user_id' => 39,
                 'title' => 'Recusandae voluptas eum.',
                 'slug' => 'dignissimos-et-quo-quasi-impedit-natus',
@@ -318,7 +285,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             33 => 
             array (
-                'id' => 34,
                 'user_id' => 40,
                 'title' => 'Quibusdam optio iure.',
                 'slug' => 'voluptatum-quibusdam-maiores-tempora-sint-est-animi-atque-molestiae',
@@ -327,7 +293,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             34 => 
             array (
-                'id' => 35,
                 'user_id' => 41,
                 'title' => 'Cum sint.',
                 'slug' => 'et-est-rerum-earum-omnis-ullam',
@@ -336,7 +301,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             35 => 
             array (
-                'id' => 36,
                 'user_id' => 42,
                 'title' => 'Aut ut.',
                 'slug' => 'quas-iure-nisi-nam-id-blanditiis-aut-eum',
@@ -345,7 +309,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             36 => 
             array (
-                'id' => 37,
                 'user_id' => 43,
                 'title' => 'Hic est enim.',
                 'slug' => 'atque-nam-autem-itaque-omnis-sint-velit-debitis-sapiente',
@@ -354,7 +317,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             37 => 
             array (
-                'id' => 38,
                 'user_id' => 44,
                 'title' => 'Est consequuntur ab.',
                 'slug' => 'aliquid-dignissimos-molestiae-dolores',
@@ -363,7 +325,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             38 => 
             array (
-                'id' => 39,
                 'user_id' => 45,
                 'title' => 'Eum commodi asperiores.',
                 'slug' => 'quisquam-aperiam-voluptatem-delectus-quo-minus-omnis',
@@ -372,7 +333,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             39 => 
             array (
-                'id' => 40,
                 'user_id' => 46,
                 'title' => 'Voluptatem quae nobis.',
                 'slug' => 'magnam-tempore-sunt-et-id-voluptates-voluptatibus',
@@ -381,7 +341,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             40 => 
             array (
-                'id' => 41,
                 'user_id' => 47,
                 'title' => 'Possimus omnis neque.',
                 'slug' => 'officiis-voluptas-ut-ratione-assumenda-excepturi-ab-accusamus',
@@ -390,7 +349,6 @@ class CategoriesTableSeeder extends Seeder
             ),
             41 => 
             array (
-                'id' => 42,
                 'user_id' => 48,
                 'title' => 'Consequatur sunt quia.',
                 'slug' => 'perspiciatis-voluptatum-dignissimos-corrupti-eligendi-dignissimos-ex-et',

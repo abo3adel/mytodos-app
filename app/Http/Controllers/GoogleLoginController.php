@@ -7,6 +7,7 @@ use Auth;
 use Exception;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Socialite;
 
@@ -43,6 +44,7 @@ class GoogleLoginController extends Controller
             $finduser->update([
                 'google_id' => $user->getId(),
                 'avatar' => $finduser->avatar ?? $user->getAvatar(),
+                'email_verified_at' => Carbon::now(),
             ]);
 
             Auth::login($finduser, true);
@@ -50,12 +52,14 @@ class GoogleLoginController extends Controller
 
             return redirect()->route('home');
         } else {
-            $newUser = User::create([
+            $newUser = User::updateOrCreate([
                 "name" => $user->getName(),
                 "email" => $user->getEmail(),
                 'avatar' => $user->getAvatar(),
                 "google_id" => $user->getId(),
-                "password" => Hash::make(Str::random(6)), // you can change auto generate password here and send it via email but you need to add checking that the user need to change the password for security reasons
+                "password" => Hash::make(Str::random(8)),
+                'email_verified_at' => Carbon::now(),
+                // you can change auto generate password here and send it via email but you need to add checking that the user need to change the password for security reasons
             ]);
 
             // dump("new");
