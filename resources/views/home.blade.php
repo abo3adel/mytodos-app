@@ -32,7 +32,7 @@
         <div class="col-0 col-md-3 px-0 d-none d-md-block">
             @include('home.categories-list')
         </div>
-        <div class="col-12 col-md-9"
+        <div class="col-12 col-md-9 px-0 px-md-3"
             x-init="loadTodos('{{ session()->has('slug') ? session()->get('slug') : $categories->first()?->slug }}');activeCategory = '{{ session()->has('slug') ? session()->get('slug') : $categories->first()?->slug }}'">
 
             <div>

@@ -28,6 +28,8 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="https://images.test/css/bootstrap.css" rel="stylesheet"> --}}
+
 </head>
 
 <body style="overflow-x: hidden;">

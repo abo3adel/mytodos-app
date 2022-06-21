@@ -55,10 +55,10 @@
                 </div>
             </template>
             <template x-for="t in todos" :key="t.id">
-                <li class="adope-products row m-0" x-show="tab === 'all' ||
+                <li class="adope-products row m-0 px-0" x-show="tab === 'all' ||
                         (tab === 'active' && !t.done) ||
                         (tab === 'done' && t.done)">
-                    <div class="col-11 d-inline-block">
+                    <div class="col-10 col-md-11 d-inline-block pe-0">
                         <div class="d-flex">
                             <div>
                                 <div class="spinner-border spinner-border-sm text-primary" x-show='updating === t.id'
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-1 d-inline-block overflow-hidden">
+                    <div class="col-2 col-md-1 d-inline-block overflow-hidden pe-0 p-md-2 text-center">
                         <button class="btn btn-danger btn-sm" x-on:click.prevent="remove(t.id)">
                             <template x-if="deleting === t.id">
                                 <div class="spinner-border spinner-border-sm text-light" role="status">
