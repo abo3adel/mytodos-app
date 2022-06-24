@@ -65,7 +65,7 @@ class GoogleLoginController extends Controller
             // dump("new");
             // dump($newUser);
 
-            // Auth::login($newUser);
+            Auth::login($newUser);
 
             return redirect()->route('home');
         }
