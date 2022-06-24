@@ -18,6 +18,7 @@
             @include('home.todo.form')
         </div>
         <div class="content-section">
+            
             @include('home.todo.tabs')
 
             <div class="content-section-title"></div>

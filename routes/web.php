@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // register auth routes manually
-require_once "auth.php";
+require "auth.php";
 
 Route::get("/", function () {
     return view("welcome");

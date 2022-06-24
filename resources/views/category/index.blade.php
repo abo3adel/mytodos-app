@@ -28,12 +28,10 @@
 }">
     <div class="main-header justify-content-center">
         <div class="h1 text-center text-white todo-header">
-            {{-- <h1 class="text-center pt-5"> --}}
             <div class="d-inline-block">
                 @include('icons.card-list')
             </div>
             <span>My Categorie-s</span>
-            {{-- </h1> --}}
         </div>
     </div>
     <div class="content-wrapper p-2">

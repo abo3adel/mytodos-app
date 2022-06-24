@@ -1,9 +1,9 @@
 <div class="header-menu">
     @if(Route::currentRouteName() === 'home')
-        <a class="menu-link d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-            aria-controls="offcanvasExample">
-            @include('icons.view-list')
-        </a>
+    <a class="menu-link d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#categoriesOffCanvas"
+        aria-controls="categoriesOffCanvas">
+        @include('icons.view-list')
+    </a>
     @endif
     <a class="menu-link @if(Route::currentRouteName() === 'home')is-active @endif"
         href="{{ route('home') }}">
@@ -27,7 +27,7 @@
         </span>
     </a> --}}
 </div>
-<div class="header-profile header-menu">
+<div class="header-profile header-menu p-0">
     <!-- Authentication Links -->
     @guest
         @if(Route::has('login'))
