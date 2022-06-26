@@ -8,6 +8,7 @@ use App\Http\Requests\TodoUpdateRequest;
 use App\Models\Category;
 use App\Models\Todo;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 it("todo has errors if user not logged in", function () {
     $res = $this->postJson(route("api.todos.store"), [])->assertStatus(401);
@@ -44,7 +45,7 @@ it("todo saves on store", function () {
         ->create();
     $category = Category::latest()->first();
     $body = $this->faker->word;
-    $tag = $this->faker->word;
+    $tag = Str::limit($this->faker->word, 8, '');
 
     $response = actingAs($user)
         ->postJson(route("api.todos.store"), [
