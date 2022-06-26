@@ -9,17 +9,6 @@ use App\Models\Category;
 use App\Models\Todo;
 use App\Models\User;
 
-it("index behaves as expected", function () {
-    $todos = Todo::factory()
-        ->times(3)
-        ->create();
-
-    $response = actingAs()->get(route("api.todos.index"));
-
-    $response->assertOK();
-    $response->assertJsonStructure([]);
-});
-
 it("todo has errors if user not logged in", function () {
     $res = $this->postJson(route("api.todos.store"), [])->assertStatus(401);
 });

@@ -14,7 +14,7 @@ uses(
     AdditionalAssertions::class,
     RefreshDatabase::class,
     WithFaker::class
-)->in('Feature', 'Unit', __DIR__);
+)->in(__DIR__);
 
 function actingAs(Authenticatable $user = null, string $driver = null)
 {

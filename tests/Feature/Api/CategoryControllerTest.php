@@ -13,34 +13,16 @@ use Str;
 
 use function Pest\Laravel\withoutExceptionHandling;
 
-it("index behaves as expected", function () {
-    $categories = Category::factory()
-        ->times(3)
-        ->create();
-
-    $response = actingAs()->get(route("api.category.index"));
-
-    $response->assertOK();
-    $response->assertJsonStructure([]);
-});
-
-// it('uses form request validation on store')
-//     ->assertActionUsesFormRequest(
-//         CategoryController::class,
-//         'store',
-//         CategoryStoreRequest::class
-//     );
-
 it("will not save category while not logged in")
     ->postJson("/api/category/", [])
     ->assertStatus(401);
 
-it("will not save categoy with invalid data", function () {})
-    ->actingAs(User::factory()->create())
-    ->postJson("/api/category/", [
+it("will not save categoy with invalid data", function () {
+    actingAs(User::factory()->create())->postJson("/api/category/", [
         "title" => "",
     ])
     ->assertStatus(422);
+});
 
 it("saves category on store", function () {
     $user = User::factory()->create();

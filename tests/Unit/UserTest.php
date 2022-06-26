@@ -46,19 +46,3 @@ test("user factory can create todos", function () {
         ->categories->toHaveCount(1)
         ->todos->toHaveCount(3);
 });
-
-test("saving new user will encrypt password", function () {
-    $pass = '$this->faker->word';
-    $user = User::create(
-        User::factory()->make([
-            "password" => $pass,
-        ])
-    );
-
-    $user->refresh();
-
-    expect($user->pass)
-        ->not()
-        ->toBe($pass)
-        ->toBe(bcrypt($pass));
-});
