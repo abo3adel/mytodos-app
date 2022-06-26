@@ -66,8 +66,12 @@
                         </div>
                         <hr />
                         <div class="flex items-center justify-end mt-4">
-                            <a href="{{ url('login/google') }}">
+                            <a href="{{ route('ext-login.google.redirect') }}">
                                 <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="join with google account">
+                            </a>
+                            <a href="{{ route('ext-login.github.redirect') }}" class="btn btn-outline-danger">
+                                @include('icons.github')
+                                sign in with Github
                             </a>
                         </div>
                     </form>

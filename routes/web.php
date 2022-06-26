@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GithubLoginController;
 use App\Http\Controllers\GoogleLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,11 +51,3 @@ Route::prefix("api")
         //     App\Http\Controllers\Api\TagController::class
         // );
     });
-
-Route::get("/login/google", [GoogleLoginController::class, "redirect"])->name(
-    "login.google-redirect"
-);
-Route::get("/login/google/callback", [
-    GoogleLoginController::class,
-    "callback",
-])->name("login.google-callback");

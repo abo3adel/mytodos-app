@@ -7,22 +7,25 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ExternalLogin\{
+    GithubLoginController,
+    GoogleLoginController
+};
 
+Route::group(["middleware" => ["guest"]], function () {
+    // login
+    Route::get("login", [LoginController::class, "showLoginForm"])->name(
+        "login"
+    );
+    Route::post("login", [LoginController::class, "login"]);
 
-Route::group(['middleware' => ['guest']], function() {
-
-// login
-Route::get("login", [LoginController::class, "showLoginForm"])->name("login");
-Route::post("login", [LoginController::class, "login"]);
-
-// register
-Route::get("register", [
-    RegisterController::class,
-    "showRegistrationForm",
-])->name("register");
-Route::post("register", [RegisterController::class, "register"]);
+    // register
+    Route::get("register", [
+        RegisterController::class,
+        "showRegistrationForm",
+    ])->name("register");
+    Route::post("register", [RegisterController::class, "register"]);
 });
-
 
 // not guest now
 Route::post("logout", [LoginController::class, "logout"])->name("logout");
@@ -51,3 +54,23 @@ Route::get("password/confirm", [
 ])->name("password.confirm");
 Route::post("password/confirm", [ConfirmPasswordController::class, "confirm"]);
 
+Route::prefix("/ext-login")
+    ->name("ext-login.")
+    ->middleware("guest")
+    ->group(function () {
+        Route::controller(GoogleLoginController::class)
+            ->name("google.")
+            ->prefix("/google")
+            ->group(function () {
+                Route::get("", "redirect")->name("redirect");
+                Route::get("/callback", "callback")->name("callback");
+            });
+
+        Route::controller(GithubLoginController::class)
+            ->name("github.")
+            ->prefix("/github")
+            ->group(function () {
+                Route::get("", "redirect")->name("redirect");
+                Route::get("/callback", "callback")->name("callback");
+            });
+    });
