@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="app-card" style='color: var(--theme-color);width: 100%;cursor: auto;'>
+            <div class="app-card no-scale" style='color: var(--theme-color);width: 100%;cursor: auto;'>
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -64,16 +64,8 @@
                                 @endif
                             </div>
                         </div>
-                        <hr />
-                        <div class="flex items-center justify-end mt-4">
-                            <a href="{{ route('ext-login.google.redirect') }}">
-                                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="join with google account">
-                            </a>
-                            <a href="{{ route('ext-login.github.redirect') }}" class="btn btn-outline-danger">
-                                @include('icons.github')
-                                sign in with Github
-                            </a>
-                        </div>
+
+                        @include('auth.external-links')
                     </form>
 
                     <pre class="bg-dark text-danger mt-5 p-2">

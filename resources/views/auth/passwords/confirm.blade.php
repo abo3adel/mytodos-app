@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="app-card" style="width: 100%;color: var(--theme-color)">
+            <div class="app-card no-scale" style="width: 100%;color: var(--theme-color)">
                 <div class="card-header">{{ __('Confirm Password') }}</div>
 
                 <div class="card-body">

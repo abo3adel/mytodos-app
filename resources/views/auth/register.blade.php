@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="app-card" style="width: 100%;color: var(--theme-color);cursor: auto;">
+            <div class="app-card no-scale" style="width: 100%;color: var(--theme-color);cursor: auto;">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -68,6 +68,8 @@
                                 </button>
                             </div>
                         </div>
+
+                        @include('auth.external-links')
                     </form>
                 </div>
             </div>
