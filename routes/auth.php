@@ -25,52 +25,57 @@ Route::group(["middleware" => ["guest"]], function () {
         "showRegistrationForm",
     ])->name("register");
     Route::post("register", [RegisterController::class, "register"]);
+
+    Route::prefix("/ext-login")
+        ->name("ext-login.")
+        ->middleware("guest")
+        ->group(function () {
+            Route::controller(GoogleLoginController::class)
+                ->name("google.")
+                ->prefix("/google")
+                ->group(function () {
+                    Route::get("", "redirect")->name("redirect");
+                    Route::get("/callback", "callback")->name("callback");
+                });
+
+            Route::controller(GithubLoginController::class)
+                ->name("github.")
+                ->prefix("/github")
+                ->group(function () {
+                    Route::get("", "redirect")->name("redirect");
+                    Route::get("/callback", "callback")->name("callback");
+                });
+        });
 });
 
-// not guest now
-Route::post("logout", [LoginController::class, "logout"])->name("logout");
+Route::middleware("auth")->group(function () {
+    Route::post("logout", [LoginController::class, "logout"])->name("logout");
 
-// reset password
-Route::get("password/reset", [
-    ForgotPasswordController::class,
-    "showLinkRequestForm",
-])->name("password.request");
-Route::post("password/email", [
-    ForgotPasswordController::class,
-    "sendResetLinkEmail",
-])->name("password.email");
-Route::get("password/reset/{token}", [
-    ResetPasswordController::class,
-    "showResetForm",
-])->name("password.reset");
-Route::post("password/reset", [ResetPasswordController::class, "reset"])->name(
-    "password.update"
-);
+    // reset password
+    Route::get("password/reset", [
+        ForgotPasswordController::class,
+        "showLinkRequestForm",
+    ])->name("password.request");
+    Route::post("password/email", [
+        ForgotPasswordController::class,
+        "sendResetLinkEmail",
+    ])->name("password.email");
+    Route::get("password/reset/{token}", [
+        ResetPasswordController::class,
+        "showResetForm",
+    ])->name("password.reset");
+    Route::post("password/reset", [
+        ResetPasswordController::class,
+        "reset",
+    ])->name("password.update");
 
-// confirm password
-Route::get("password/confirm", [
-    ConfirmPasswordController::class,
-    "showConfirmForm",
-])->name("password.confirm");
-Route::post("password/confirm", [ConfirmPasswordController::class, "confirm"]);
-
-Route::prefix("/ext-login")
-    ->name("ext-login.")
-    ->middleware("guest")
-    ->group(function () {
-        Route::controller(GoogleLoginController::class)
-            ->name("google.")
-            ->prefix("/google")
-            ->group(function () {
-                Route::get("", "redirect")->name("redirect");
-                Route::get("/callback", "callback")->name("callback");
-            });
-
-        Route::controller(GithubLoginController::class)
-            ->name("github.")
-            ->prefix("/github")
-            ->group(function () {
-                Route::get("", "redirect")->name("redirect");
-                Route::get("/callback", "callback")->name("callback");
-            });
-    });
+    // confirm password
+    Route::get("password/confirm", [
+        ConfirmPasswordController::class,
+        "showConfirmForm",
+    ])->name("password.confirm");
+    Route::post("password/confirm", [
+        ConfirmPasswordController::class,
+        "confirm",
+    ]);
+});
